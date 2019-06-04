@@ -1,2 +1,2 @@
 # muscaestar.github.io
-A website by a fresh learner.
+A pure html website about Musca Constellation.
