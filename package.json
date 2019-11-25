@@ -1,24 +1,25 @@
 {
-  "name": "myBlog",
-  "version": "1.0.0",
-  "description": "Muscaestar's Blog",
-  "main": "index.js",
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    "deploy": "gh-pages -d dist"
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/muscaestar/myBlog.git"
+  "hexo": {
+    "version": "4.0.0"
   },
-  "keywords": [],
-  "author": "muscaestar",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/muscaestar/myBlog/issues"
-  },
-  "homepage": "https://muscaestar.github.io/myBlog",
   "dependencies": {
-    "gh-pages": "^2.1.1"
+    "hexo": "^4.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^1.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^1.0.0",
+    "hexo-renderer-stylus": "^1.1.0",
+    "hexo-renderer-marked": "^2.0.0",
+    "hexo-server": "^1.0.0"
   }
 }
