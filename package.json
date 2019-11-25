@@ -1,0 +1,24 @@
+{
+  "name": "myBlog",
+  "version": "1.0.0",
+  "description": "Muscaestar's Blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muscaestar/myBlog.git"
+  },
+  "keywords": [],
+  "author": "muscaestar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muscaestar/myBlog/issues"
+  },
+  "homepage": "https://muscaestar.github.io/myBlog",
+  "dependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}
