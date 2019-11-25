@@ -14,7 +14,7 @@ timezone: '' #By default depends on your local machine
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://muscaestar.github.io/myBlog
-root: /
+root: /myBlog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -95,4 +95,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: 'git'
+  repo: https://github.com/muscaestar/myBlog
+  branch: gh-pages #published
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
