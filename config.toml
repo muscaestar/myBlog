@@ -19,17 +19,93 @@ DefaultContentLanguageInSubdir = true
     contentDir = "content/en" #English
     weight = 1
     languageName = "English"
+    subtitle = "This is subtitle for this website"
     [languages.en.params]
       linkedin = "https://muscaestar.github.io/myBlog/en/"
+    [[languages.en.menu.main]]
+        name = "Blog"
+        url = ""
+        weight = 1
+
+    [[languages.en.menu.main]]
+        name = "About"
+        url = "pages/about/"
+        weight = 3
+
+    [[languages.en.menu.main]]
+        identifier = "samples"
+        name = "Samples"
+        weight = 2
+
+    [[languages.en.menu.main]]
+        parent = "samples"
+        name = "Big Image Sample"
+        url = "post/2017-03-07-bigimg-sample"
+        weight = 1
+
+    [[languages.en.menu.main]]
+        parent = "samples"
+        name = "Math Sample"
+        url = "post/2017-03-05-math-sample"
+        weight = 2
+
+    [[languages.en.menu.main]]
+        parent = "samples"
+        name = "Code Sample"
+        url = "post/2016-03-08-code-sample"
+        weight = 3
+
+    [[languages.en.menu.main]]
+        name = "Tags"
+        url = "tags"
+        weight = 3
   [languages.zh-CN]
     contentDir = "content/zh-CN" #Simplified Chinese
     weight = 2
     languageName = "简体中文"
+    subtitle = "副标题"
+    [languages.zh-CN.params]
       linkedin = "https://muscaestar.github.io/myBlog/zh-CN/"
+    [[languages.zh-CN.menu.main]]
+        name = "博客"
+        url = ""
+        weight = 1
+
+    [[languages.zh-CN.menu.main]]
+        name = "关于"
+        url = "pages/about/"
+        weight = 3
+
+    [[languages.zh-CN.menu.main]]
+        identifier = "samples"
+        name = "Samples"
+        weight = 2
+
+    [[languages.zh-CN.menu.main]]
+        parent = "samples"
+        name = "Big Image Sample"
+        url = "post/2017-03-07-bigimg-sample"
+        weight = 1
+
+    [[languages.zh-CN.menu.main]]
+        parent = "samples"
+        name = "Math Sample"
+        url = "post/2017-03-05-math-sample"
+        weight = 2
+
+    [[languages.zh-CN.menu.main]]
+        parent = "samples"
+        name = "Code Sample"
+        url = "post/2016-03-08-code-sample"
+        weight = 3
+
+    [[languages.zh-CN.menu.main]]
+        name = "标签"
+        url = "tags"
+        weight = 3
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
-  subtitle = "This is subtitle for this website"
   mainSections = ["post","posts"]
   logo = "img/rika-avatar-480.jpeg" # Expecting square dimensions
   favicon = "img/favicon.ico"
@@ -43,7 +119,7 @@ DefaultContentLanguageInSubdir = true
   socialShare = false
   delayDisqus = false
   showRelatedPosts = true
-#  hideAuthor = true
+  hideAuthor = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
 #[[Params.bigimg]]
@@ -88,40 +164,3 @@ DefaultContentLanguageInSubdir = true
   # weibo = "username"
   # slack = "username"
 
-[[menu.main]]
-    name = "Blog"
-    url = ""
-    weight = 1
-
-[[menu.main]]
-    name = "About"
-    url = "pages/about/"
-    weight = 3
-
-[[menu.main]]
-    identifier = "samples"
-    name = "Samples"
-    weight = 2
-
-[[menu.main]]
-    parent = "samples"
-    name = "Big Image Sample"
-    url = "post/2017-03-07-bigimg-sample"
-    weight = 1
-
-[[menu.main]]
-    parent = "samples"
-    name = "Math Sample"
-    url = "post/2017-03-05-math-sample"
-    weight = 2
-
-[[menu.main]]
-    parent = "samples"
-    name = "Code Sample"
-    url = "post/2016-03-08-code-sample"
-    weight = 3
-
-[[menu.main]]
-    name = "Tags"
-    url = "tags"
-    weight = 3
