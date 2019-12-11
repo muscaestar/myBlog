@@ -1,0 +1,4 @@
+baseURL = "http://muscaestar.github.io/myBlog/"
+languageCode = "en-us"
+title = "Muscaestar's Blog"
+theme = "beautifulhugo"
