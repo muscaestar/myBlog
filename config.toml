@@ -3,12 +3,10 @@ baseURL = "https://muscaestar.github.io/myBlog/"
 metaDataFormat = "yaml"
 title = "Muscaestar's Blog"
 theme = "beautifulhugo"
-pygmentsStyle = "trac"
-pygmentsUseClasses = true
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-#pygmentsUseClassic = true
-pygmentOptions = "linenos=inline"
+#pygmentsStyle = "trac"
+#pygmentsUseClasses = true
+#pygmentsCodeFences = true
+#pygmentsCodefencesGuessSyntax = true
 #disqusShortname = "XXX"
 #googleAnalytics = "XXX"
 
@@ -29,7 +27,7 @@ DefaultContentLanguageInSubdir = true
 
     [[languages.en.menu.main]]
         name = "About"
-        url = "pages/about/"
+        url = "page/about/"
         weight = 3
 
     [[languages.en.menu.main]]
@@ -73,7 +71,7 @@ DefaultContentLanguageInSubdir = true
 
     [[languages.zh-CN.menu.main]]
         name = "关于"
-        url = "pages/about/"
+        url = "page/about/"
         weight = 3
 
     [[languages.zh-CN.menu.main]]
@@ -115,7 +113,7 @@ DefaultContentLanguageInSubdir = true
   comments = true
   readingTime = true
   wordCount = true
-  useHLJS = true
+  useHLJS = false
   socialShare = false
   delayDisqus = false
   showRelatedPosts = true
