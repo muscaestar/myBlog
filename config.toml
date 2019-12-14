@@ -17,7 +17,7 @@ DefaultContentLanguageInSubdir = true
     contentDir = "content/en" #English
     weight = 1
     languageName = "English"
-    subtitle = "This is subtitle for this website"
+#    subtitle = "This is subtitle for this website"
     [languages.en.params]
       linkedin = "https://muscaestar.github.io/myBlog/en/"
     [[languages.en.menu.main]]
@@ -31,27 +31,21 @@ DefaultContentLanguageInSubdir = true
         weight = 3
 
     [[languages.en.menu.main]]
-        identifier = "samples"
-        name = "Samples"
+        identifier = "Projects"
+        name = "Projects"
         weight = 2
 
     [[languages.en.menu.main]]
-        parent = "samples"
-        name = "Big Image Sample"
-        url = "post/2017-03-07-bigimg-sample"
+        parent = "Projects"
+        name = "In Progress"
+        url = ""
         weight = 1
 
-    [[languages.en.menu.main]]
-        parent = "samples"
-        name = "Math Sample"
-        url = "post/2017-03-05-math-sample"
-        weight = 2
-
-    [[languages.en.menu.main]]
-        parent = "samples"
-        name = "Code Sample"
-        url = "post/2016-03-08-code-sample"
-        weight = 3
+    # [[languages.en.menu.main]]
+    #     parent = "Projects"
+    #     name = "Math Sample"
+    #     url = "post/2017-03-05-math-sample"
+    #     weight = 2
 
     [[languages.en.menu.main]]
         name = "Tags"
@@ -61,7 +55,7 @@ DefaultContentLanguageInSubdir = true
     contentDir = "content/zh-CN" #Simplified Chinese
     weight = 2
     languageName = "简体中文"
-    subtitle = "副标题"
+#    subtitle = "副标题"
     [languages.zh-CN.params]
       linkedin = "https://muscaestar.github.io/myBlog/zh-CN/"
     [[languages.zh-CN.menu.main]]
@@ -75,27 +69,15 @@ DefaultContentLanguageInSubdir = true
         weight = 3
 
     [[languages.zh-CN.menu.main]]
-        identifier = "samples"
-        name = "Samples"
+        identifier = "Projects"
+        name = "项目"
         weight = 2
 
     [[languages.zh-CN.menu.main]]
-        parent = "samples"
-        name = "Big Image Sample"
-        url = "post/2017-03-07-bigimg-sample"
+        parent = "Projects"
+        name = "In Progress"
+        url = ""
         weight = 1
-
-    [[languages.zh-CN.menu.main]]
-        parent = "samples"
-        name = "Math Sample"
-        url = "post/2017-03-05-math-sample"
-        weight = 2
-
-    [[languages.zh-CN.menu.main]]
-        parent = "samples"
-        name = "Code Sample"
-        url = "post/2016-03-08-code-sample"
-        weight = 3
 
     [[languages.zh-CN.menu.main]]
         name = "标签"

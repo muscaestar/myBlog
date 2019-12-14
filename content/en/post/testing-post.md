@@ -1,6 +1,7 @@
 ---
 title: "Testing Post Title"
 date: 2019-12-11T18:38:39+11:00
+draft: true
 ---
 
 Body content test.
