@@ -1,26 +1,26 @@
 ---
-title: "Start a Multi Language Blog With HUGO"
-subtitle: "And host it on Github pages"
+title: "Start a Multi Language Blog with Hugo"
+subtitle: "And host it on Github Pages"
 date: 2019-12-12T11:56:10+11:00
-tags: ["blog", "HUGO"]
-draft: true
+tags: ["blog", "Hugo"]
+draft: false
 ---
-HUGO is a handy framwork for generating static website, which suits for normal
+Hugo is a handy framework for generating static website, which suits for normal
 blog. You can easily write blogs with various markdown languages and organize
 them with lots of features. This article will show you how I create this blog with it. I will focus on:
 1. Installation and Deployment
 2. Multi-Language Setting
 <!--more-->
 
-# Why HUGO? 
+# Why Hugo? 
 Fast. Flexible. Open Source. Go... Plenty of reasons for trying it. Actually, I
 don't care. For me, the key point is that it works well with Emacs, org-mode.
-But this article won't mention any of Emacs. Before I integrate HUGO with Emacs,
-what I did is just using HUGO like a normal person. And it's just soooo easy and
+But this article won't mention any of Emacs. Before I integrate Hugo with Emacs,
+what I did is just using Hugo like a normal person. And it's just soooo easy and
 convenient to use.
 
-So, the purpose of this article is just to show you how to use HUGO with just a
-little knowledge of command line.
+So, the purpose of this article is just to show you how to use Hugo with just a
+little knowledge about command line.
 
 # Before start
 Three things to ensure a smooth experience:
@@ -28,11 +28,11 @@ Three things to ensure a smooth experience:
 2. Ability to check official document
 3. Basic usage of Github 
 
-Environment: `macOS`
+Operating System: `macOS`
 
 # Installation and Deployment
 
-## Install and Configure
+## Install 
 Run the commands below. Checkout document for details: [Quick Start](https://gohugo.io/getting-started/quick-start/)
 ```shell
 $ brew install hugo    # Homebrew
@@ -44,12 +44,12 @@ $ git init             # Version control
 Then make it a Github repository. No further instruction here.
 
 ## Add theme 
-In my case, I choose [Beautiful HUGO](https://themes.gohugo.io/beautifulhugo/)
+In my case, I choose [Beautiful Hugo](https://themes.gohugo.io/beautifulhugo/)
 as my theme. 
 
 Notice that in my configurations below, some of them maybe required specifically by this theme. 
 
-Installing the theme:
+Install the theme:
 ```shell
 $ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
 # use theme's example config file as a start point
@@ -71,12 +71,12 @@ $ hugo new post/testing-post.md # Create a new post
 ```
 The new file will locate under `<project>/content/post/`.
 
-****BeautifulHUGO specification: to make some functions work, you must use the
+****BeautifulHugo specification: to make some functions work, you must use the
 words `page` and `post` as the directory.**
 
 Now start the server to check the layout:
 ```bash 
-$ hugo server -D # Start the HUGO server locally
+$ hugo server -D # Start the Hugo server locally
 ```
 Go to <http://localhost:1313/> (or http://localhost:1313/projectName/ in my
 case) to check the blog. Usually it look wired, so keep modifying `config.toml` until you're happy (Please make your life easy. No need to be perfect).
@@ -96,8 +96,8 @@ Must follow the document **carefully**, and you will finally finish setting up
 the gh-pages and get a script named `publish_to_ghpages.sh` to automate your
 future publishing.
 
-****Notice that it needs to use `origin` to replace `upstream` in the command
-provided in document.** As the master branch of your remote repo is named `origin`.
+****Notice that in my case, it needs to use `origin` to replace `upstream` in the command
+provided in document.** As the master branch of my remote repo is named `origin`.
 
 ## Simple workflow
 After it's successfully deployed, go to the github page of this repo, you shall
@@ -105,7 +105,7 @@ see 2 branches. `gh-pages` branch is treated as the published site and `master`
 branch is your working branch. By doing so, the source files and rendered files
 are separated, which helps maintenance and version control.
 
-For the workflow of writing and post an article to your blog:
+For the workflow of writing and posting an article to your blog:
 1. run `hugo new post/Article-Name.md`
 2. write the article
 3. run `hugo server -D` and check the final product
@@ -116,13 +116,13 @@ For the workflow of writing and post an article to your blog:
 Done.
 
 # Multi Language Setting
-Beautiful HUGO provides some functions to support multi languages, and so does
+Beautiful Hugo provides some functions to support multi languages, and so does
 other themes. Here I introduce my settings: 
 - English as default
 - Simplified Chinese as secondary 
 - Different main menu for each language
-- An option for switching language, placed in main menu, top right corner. (Supported by Beautiful HUGO)
-- For each article, an option for switching language, placed under the title. (Supported by Beautiful HUGO) 
+- An option for switching language, placed in main menu, top right corner. (Supported by Beautiful Hugo)
+- For each article, an option for switching language, placed under the title. (Supported by Beautiful Hugo) 
 
 The files needed to be changed:
 - `config.toml`
@@ -184,10 +184,10 @@ Templates](https://gohugo.io/templates/partials/). Partial template can be place
 `/layouts/partials/` or `/themes/<themename>/layouts/partials/`. 
 
 `nav.html` is a template provided by Beautiful Hugo, which sets the format of
-main menu. It works by default, but in my case, since baseURL is setted as
+main menu. It works by default, but in my case, since baseURL is set as
 `<username>.github.io/<projectName>`, there's one place need to be changed.
 
-To modify the templates provided by the theme, I recommand to do this:
+To modify the templates provided by the theme, I recommend to do this:
 ```shell
 # make a copy of theme's nav.html and place it in your own place
 $ cp /themes/beautifulhugo/layouts/partials/nav.html /layouts/partials/nav.html
@@ -237,5 +237,9 @@ content/      content/
 # In the End
 So far, a multi language blog is successfully built. It already has a pretty
 easy workflow for blogging, and it's actually enough for daily use. 
-For explorers, there're still plenty of advanced functionality of
-Hugo, and for me, I'll start working on the integration of Hugo and Emacs.
+For explorers, there're still plenty of advanced functionalities of
+Hugo, and for me, I'll start working on the integration of Hugo and Emacs, org-mode.
+
+
+
+
