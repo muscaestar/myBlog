@@ -2,6 +2,7 @@
 title: "用Hugo构建一个多语言博客"
 subtitle: "以及在Github Pages上的部署"
 date: 2019-12-12T11:56:10+11:00
+lastmod: 2019-12-14T11:56:10+11:00
 tags: ["blog", "Hugo"]
 draft: false
 ---
@@ -110,6 +111,7 @@ Beautiful Hugo 本身提供了一些支持多语言的功能，我的设置如�
 - `config.toml`
 - `nav.html`
 - `/content/`路径下的文件结构
+- `single.html` `terms.html` `post_preview.html`
 
 ## 修改`config.toml`
 相关文档：[Multilingual](https://gohugo.io/content-management/multilingual/)
@@ -207,6 +209,18 @@ content/      content/
     ├── page/     ├── page/ 
     └── post/     └── post/ 
 ```
+
+## 修改路径 `single.html`, `terms.html`, `post_preview.html` (更新)
+变量`.Site.LanguagePrefix`有一些问题，没法返回完整的url，于是我用`.Site.Language.Lang`来代替它。
+```shell
+$ cp themes/beautifulhugo/layouts/_default/single.html layouts/_default/single.html
+$ cp themes/beautifulhugo/layouts/_default/terms.html layouts/_default/terms.html
+$ cp themes/beautifulhugo/layouts/partials/post_preview.html layouts/partials/post_preview.html 
+```
+在下列三个文件中，用`.Site.Language.Lang`来代替`.Site.LanguagePrefix`:
+- layouts/_default/single.html
+- layouts/_default/terms.html
+- layouts/partials/post_preview.html 
 
 # 写在最后
 至此，一个多语言博客就设置部署完成了。文中提到的发布流程也足够日常发布博文使用，

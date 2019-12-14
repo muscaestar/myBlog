@@ -2,6 +2,7 @@
 title: "Start a Multi Language Blog with Hugo"
 subtitle: "And host it on Github Pages"
 date: 2019-12-12T11:56:10+11:00
+lastmod: 2019-12-14T11:56:10+11:00
 tags: ["blog", "Hugo"]
 draft: false
 ---
@@ -128,6 +129,7 @@ The files needed to be changed:
 - `config.toml`
 - `nav.html`
 - structure under `/content/`
+- `single.html` `terms.html` `post_preview.html`
 
 ## Modify `config.toml`
 Details in official document: [Multilingual](https://gohugo.io/content-management/multilingual/)
@@ -233,6 +235,21 @@ content/      content/
     ├── page/     ├── page/ 
     └── post/     └── post/ 
 ```
+
+## Modify `single.html`, `terms.html`, `post_preview.html` (Updated)
+The problem comes with the variable `.Site.LanguagePrefix`, for some reasons, it
+doesn't return complete baseURL. The url of tags will be affected by this problem. The solution is to use `.Site.Language.Lang`.
+Here're the details:
+```shell
+$ cp themes/beautifulhugo/layouts/_default/single.html layouts/_default/single.html
+$ cp themes/beautifulhugo/layouts/_default/terms.html layouts/_default/terms.html
+$ cp themes/beautifulhugo/layouts/partials/post_preview.html layouts/partials/post_preview.html 
+```
+Then use `.Site.Language.Lang` to replace `.Site.LanguagePrefix` in the
+following files:
+- layouts/_default/single.html
+- layouts/_default/terms.html
+- layouts/partials/post_preview.html 
 
 # In the End
 So far, a multi language blog is successfully built. It already has a pretty
