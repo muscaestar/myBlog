@@ -111,7 +111,7 @@ Beautiful Hugo 本身提供了一些支持多语言的功能，我的设置如�
 - `config.toml`
 - `nav.html`
 - `/content/`路径下的文件结构
-- `single.html` `terms.html` `post_preview.html`
+- `single.html`, `terms.html`, `post_preview.html`
 
 ## 修改`config.toml`
 相关文档：[Multilingual](https://gohugo.io/content-management/multilingual/)

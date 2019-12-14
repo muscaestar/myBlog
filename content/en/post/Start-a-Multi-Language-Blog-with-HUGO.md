@@ -129,7 +129,7 @@ The files needed to be changed:
 - `config.toml`
 - `nav.html`
 - structure under `/content/`
-- `single.html` `terms.html` `post_preview.html`
+- `single.html`, `terms.html`, `post_preview.html`
 
 ## Modify `config.toml`
 Details in official document: [Multilingual](https://gohugo.io/content-management/multilingual/)
