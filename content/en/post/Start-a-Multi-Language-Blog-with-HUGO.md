@@ -128,7 +128,7 @@ other themes. Here I introduce my settings:
 The files needed to be changed:
 - `config.toml`
 - `nav.html`
-- structure under `/content/`
+- structure under `content/`
 - `single.html`, `terms.html`, `post_preview.html`
 
 ## Modify `config.toml`
@@ -183,7 +183,7 @@ DefaultContentLanguageInSubdir = true
 ## Modify `nav.html`
 `nav.html` is a partial template. For more details, go to: [Partial
 Templates](https://gohugo.io/templates/partials/). Partial template can be placed in
-`/layouts/partials/` or `/themes/<themename>/layouts/partials/`. 
+`layouts/partials/` or `themes/<themename>/layouts/partials/`. 
 
 `nav.html` is a template provided by Beautiful Hugo, which sets the format of
 main menu. It works by default, but in my case, since baseURL is set as
@@ -192,9 +192,9 @@ main menu. It works by default, but in my case, since baseURL is set as
 To modify the templates provided by the theme, I recommend to do this:
 ```shell
 # make a copy of theme's nav.html and place it in your own place
-$ cp /themes/beautifulhugo/layouts/partials/nav.html /layouts/partials/nav.html
+$ cp themes/beautifulhugo/layouts/partials/nav.html layouts/partials/nav.html
 ```
-Then modify the `nav.html` under `/layouts/partials/`. Hugo engine will read your
+Then modify the `nav.html` under `layouts/partials/`. Hugo engine will read your
 template instead of the theme's. (More details about [Hugo's Lookup
 Order](https://gohugo.io/templates/lookup-order/) )
 
@@ -226,7 +226,7 @@ line 39, 48.
 {{ end }}
 ```
 
-## Modify structure under `/content/`
+## Modify structure under `content/`
 The file structure must match with the `contentDir` variable specified in
 `config.toml`. In my case, the structure is set as below:
 ```

@@ -110,7 +110,7 @@ Beautiful Hugo 本身提供了一些支持多语言的功能，我的设置如�
 需要修改一下文档：
 - `config.toml`
 - `nav.html`
-- `/content/`路径下的文件结构
+- `content/`路径下的文件结构
 - `single.html`, `terms.html`, `post_preview.html`
 
 ## 修改`config.toml`
@@ -163,16 +163,16 @@ DefaultContentLanguageInSubdir = true
 
 ## 修改 `nav.html`
 `nav.html` 是一个 partial template. 相关文档：[Partial
-Templates](https://gohugo.io/templates/partials/). Partial template 可以被放在`/layouts/partials/` 或者 `/themes/<themename>/layouts/partials/`. 
+Templates](https://gohugo.io/templates/partials/). Partial template 可以被放在`layouts/partials/` 或者 `themes/<themename>/layouts/partials/`. 
 
 `nav.html` 由Beautiful Hugo提供, 用来构建主菜单，默认即可使用。但是本博客的baseURL被设置为 `<username>.github.io/<projectName>`, 所以有个地方是需要改动的。
 
 推荐在改动前做以下操作：
 ```shell
 # make a copy of theme's nav.html and place it in your own place
-$ cp /themes/beautifulhugo/layouts/partials/nav.html /layouts/partials/nav.html
+$ cp themes/beautifulhugo/layouts/partials/nav.html layouts/partials/nav.html
 ```
-需要修改的`nav.html`是放在`/layouts/partials/`路径下的. Hugo 会将你的个人设置优先于主题的设置。([Hugo's Lookup
+需要修改的`nav.html`是放在`layouts/partials/`路径下的. Hugo 会将你的个人设置优先于主题的设置。([Hugo's Lookup
 Order](https://gohugo.io/templates/lookup-order/) )
 
 以下是`nav.html`的节选. 因为我的baseURL值为`muscaestar.github.io/myBlog/`, 所以我把`/myBlog/`加到特定的地方，详情见行39,48.
@@ -201,7 +201,7 @@ Order](https://gohugo.io/templates/lookup-order/) )
 {{ end }}
 ```
 
-## 修改路径`/content/`下的文件结构
+## 修改路径`content/`下的文件结构
 路径名必须与配置文件`config.toml`中的`contentDir`值相匹配。本博客的结构如下：
 ```
 content/      content/      
@@ -210,7 +210,7 @@ content/      content/
     └── post/     └── post/ 
 ```
 
-## 修改路径 `single.html`, `terms.html`, `post_preview.html` (更新)
+## 修改文件 `single.html`, `terms.html`, `post_preview.html` (更新)
 变量`.Site.LanguagePrefix`有一些问题，没法返回完整的url，于是我用`.Site.Language.Lang`来代替它。
 ```shell
 $ cp themes/beautifulhugo/layouts/_default/single.html layouts/_default/single.html
