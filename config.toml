@@ -17,7 +17,7 @@ DefaultContentLanguageInSubdir = true
     contentDir = "content/en" #English
     weight = 1
     languageName = "English"
-#    subtitle = "This is subtitle for this website"
+    subtitle = "Your day starts the night before."
     [languages.en.params]
       linkedin = "https://muscaestar.github.io/myBlog/en/"
     [[languages.en.menu.main]]
@@ -55,7 +55,7 @@ DefaultContentLanguageInSubdir = true
     contentDir = "content/zh-CN" #Simplified Chinese
     weight = 2
     languageName = "简体中文"
-#    subtitle = "副标题"
+    subtitle = "昨天是今天的开始"
     [languages.zh-CN.params]
       linkedin = "https://muscaestar.github.io/myBlog/zh-CN/"
     [[languages.zh-CN.menu.main]]
