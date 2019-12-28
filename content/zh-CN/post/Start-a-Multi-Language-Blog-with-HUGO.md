@@ -4,7 +4,7 @@ subtitle: "以及在Github Pages上的部署"
 date: 2019-12-12T11:56:10+11:00
 lastmod: 2019-12-14T11:56:10+11:00
 tags: ["blog", "Hugo"]
-draft: false
+draft: true
 ---
 Hugo 是一个非常好用的静态网站生成器，也适合用来创建简单的博客。它有非常多的功能，
 并且支持各种Markdown 语言。本篇文章主要用来记录本博客的创建，主要内容有：
