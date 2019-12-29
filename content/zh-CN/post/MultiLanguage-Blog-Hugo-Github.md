@@ -1,7 +1,8 @@
 ---
 title: "用 Hugo 构建一个多语言博客（Github 部署）"
 author: ["Muscaestar"]
-lastmod: 2019-12-28T18:11:43+11:00
+date: 2019-12-27T17:37:00+11:00
+lastmod: 2019-12-29T17:38:13+11:00
 tags: ["blog", "Hugo"]
 draft: false
 ---

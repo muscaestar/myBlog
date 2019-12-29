@@ -1,7 +1,8 @@
 ---
 title: "Start a Multi Language Blog with Hugo on Github Pages"
 author: ["Muscaestar"]
-lastmod: 2019-12-28T18:11:40+11:00
+date: 2019-12-27T17:37:00+11:00
+lastmod: 2019-12-29T17:38:03+11:00
 tags: ["blog", "Hugo"]
 draft: false
 ---
@@ -301,4 +302,4 @@ following files:
 So far, a multi language blog is successfully built. It already has a pretty
 easy workflow for blogging, and it's actually enough for daily use.
 For explorers, there're still plenty of advanced functionalities of
-Hugo, and for me, I'll start working on the integration of Hugo and Emacs, org-mode.
+Hugo, and for me, I'll start working on the integration of Hugo and org-mode in Emacs.
