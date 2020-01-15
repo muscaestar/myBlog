@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Muscaestar&#39;s Blog</title>
+    <link>https://www.muscaestar.xyz/en/page/</link>
+    <description>Recent content in Pages on Muscaestar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 28 Dec 2019 16:45:33 +1100</lastBuildDate>
+    
+	<atom:link href="https://www.muscaestar.xyz/en/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Me</title>
+      <link>https://www.muscaestar.xyz/en/page/about/</link>
+      <pubDate>Sat, 28 Dec 2019 16:45:33 +1100</pubDate>
+      
+      <guid>https://www.muscaestar.xyz/en/page/about/</guid>
+      <description>I&#39;m a newbie who bumped into the programming world a few years ago and decided to stay forever. Now I&#39;m studying IT in University. This blog shall witness my passion and efforts.
+I love Vim and Doom-Emacs. But since I realized these endless tool-customizing time didn&#39;t actually benefit my core skills, I&#39;ve started to focus on &amp;lsquo;decent real-matters&amp;rsquo;.
+Start from, data structures and algorithms&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,5 +1,6 @@
 #baseURL = "https://muscaestar.github.io/myBlog/"
-baseURL = "https://muscaestar.github.io/"
+#baseURL = "https://muscaestar.github.io/"
+baseURL = "https://www.muscaestar.xyz/"
 #languageCode = "en-us"
 metaDataFormat = "yaml"
 title = "Muscaestar's Blog"
@@ -21,7 +22,8 @@ DefaultContentLanguageInSubdir = true
     subtitle = "Your day starts the night before."
     [languages.en.params]
       #linkedin = "https://muscaestar.github.io/myBlog/en/"
-      linkedin = "https://muscaestar.github.io/"
+      #linkedin = "https://muscaestar.github.io/"
+      linkedin = "https://www.muscaestar.xyz/"
     [[languages.en.menu.main]]
         name = "Blog"
         url = ""
@@ -60,7 +62,8 @@ DefaultContentLanguageInSubdir = true
     subtitle = "今日始于昨夜"
     [languages.zh-CN.params]
       #linkedin = "https://muscaestar.github.io/myBlog/zh-CN/"
-      linkedin = "https://muscaestar.github.io/zh-CN/"
+      #linkedin = "https://muscaestar.github.io/zh-CN/"
+      linkedin = "https://www.muscaestar.xyz/zh-CN/"
     [[languages.zh-CN.menu.main]]
         name = "博客"
         url = ""

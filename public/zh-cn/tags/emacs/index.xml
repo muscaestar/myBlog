@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emacs on Muscaestar&#39;s Blog</title>
+    <link>https://www.muscaestar.xyz/zh-cn/tags/emacs/</link>
+    <description>Recent content in Emacs on Muscaestar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 29 Dec 2019 20:51:00 +1100</lastBuildDate>
+    
+	<atom:link href="https://www.muscaestar.xyz/zh-cn/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用 Emacs 来管理 Hugo 博客</title>
+      <link>https://www.muscaestar.xyz/zh-cn/post/emacs-ox-hugo-organize-blog/</link>
+      <pubDate>Sun, 29 Dec 2019 20:51:00 +1100</pubDate>
+      
+      <guid>https://www.muscaestar.xyz/zh-cn/post/emacs-ox-hugo-organize-blog/</guid>
+      <description>&lt;p&gt;Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

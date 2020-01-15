@@ -3,6 +3,6 @@
 #db.json
 #*.log
 #node_modules/
-public/
+#public/
 #.deploy*/
 org/

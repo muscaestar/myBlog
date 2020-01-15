@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>用 Emacs 来管理 Hugo 博客 - Muscaestar&#39;s Blog</title>
+  <meta name="description" content="Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。">
+  <meta name="author" content="Muscaestar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Muscaestar\x27s Blog",
+    
+    "url": "https:\/\/www.muscaestar.xyz\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/www.muscaestar.xyz\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/www.muscaestar.xyz\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/www.muscaestar.xyz\/zh-cn\/post\/emacs-ox-hugo-organize-blog\/",
+          "name": "用 emacs 来管理 hugo 博客"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "[Muscaestar]"
+  },
+  "headline": "用 Emacs 来管理 Hugo 博客",
+  "description" : "Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。\n",
+  "inLanguage" : "zh-cn",
+  "wordCount":  250 ,
+  "datePublished" : "2019-12-29T20:51:00",
+  "dateModified" : "2019-12-29T20:51:00",
+  "image" : "https:\/\/www.muscaestar.xyz\/img\/rika-avatar-480.jpeg",
+  "keywords" : [ "blog, Hugo, Emacs, org-mode" ],
+  "mainEntityOfPage" : "https:\/\/www.muscaestar.xyz\/zh-cn\/post\/emacs-ox-hugo-organize-blog\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/www.muscaestar.xyz\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/www.muscaestar.xyz\/img\/rika-avatar-480.jpeg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="用 Emacs 来管理 Hugo 博客" />
+<meta property="og:description" content="Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。">
+<meta property="og:image" content="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" />
+<meta property="og:url" content="https://www.muscaestar.xyz/zh-cn/post/emacs-ox-hugo-organize-blog/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Muscaestar&#39;s Blog" />
+
+  <meta name="twitter:title" content="用 Emacs 来管理 Hugo 博客" />
+  <meta name="twitter:description" content="Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。">
+  <meta name="twitter:image" content="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://www.muscaestar.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.60.1" />
+  <link rel="alternate" href="https://www.muscaestar.xyz/zh-cn/index.xml" type="application/rss+xml" title="Muscaestar&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://www.muscaestar.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://www.muscaestar.xyz/css/syntax.css" /><link rel="stylesheet" href="https://www.muscaestar.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.muscaestar.xyz/zh-cn/">Muscaestar&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="博客" href="/zh-cn/">博客</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">项目</a>
+              <div class="navlinks-children">
+                
+                  <a href="/zh-cn/">In Progress</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="/zh-cn/page/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="标签" href="/zh-cn/tags">标签</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">English</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Muscaestar&#39;s Blog" href="https://www.muscaestar.xyz/zh-cn/">
+            <img class="avatar-img" src="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" alt="Muscaestar&#39;s Blog" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>用 Emacs 来管理 Hugo 博客</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;December 29, 2019
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;250&nbsp;个字
+  
+  
+  &nbsp;&bull;&nbsp;其它语言: <a href="https://www.muscaestar.xyz/en/post/emacs-ox-hugo-organize-blog/" lang="en">English</a>
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。</p>
+<h2 id="为什么使用-emacs-org-mode">为什么使用 Emacs？Org-mode?</h2>
+<p>我想大部分程序员应该都听过 GNU/Emacs 的名声，或者至少听说过 Vim 和 Emacs 的宇宙最强编辑器大战，这种老梗。很多 Vim 或者 Emacs 的使用者，或者说，初学者，都挺喜欢津津乐道这种“上古编辑器”的自定义啊，学习门槛高啊，什么不需要使用鼠标的高效啊，装逼性强啊之类的优点。不是说不好，我也挺喜欢的，不过说实话，稍微走出“上古编辑器”这个圈地自萌的领域，就会发现，其实真的愿意使用 Vim 或 Emacs 的人，真的越来越少了。主要一个原因，现代 IDE 越来越好用了，并且大都自带 Vim, Emacs 插件。键位对上了，而且开箱即用，不得不说，用一下真的很香。</p>
+<p>既然这么香，那我何必在这里写一个配置 Emacs 的文章？还只是一个微不足道的小功能？我承认，我也很喜欢开箱即用，节省了很多时间和麻烦。但是但是，开箱即用，永远都不可能完全贴合每一个使用者的习惯。所谓编辑器，要不是你适应它，就得它适应你，最后还是时间花费上的权衡。说现代软件越来越先进，其实也不全对，比如 org-mode 的存在，就让我一直费解：10 多年了，为什么没有人能做出一个超越 org-mode 的，集项目管理，时间规划，
+Markup 格式，还能内置跑代码等，各种功能于一身的软件？</p>
+<p>Org-mode 就是我一直使用 Emacs 的原因，至今没有找到任何一个替代品。它的功能实在太强大，各部分之间的集成又实在是太顺滑。我曾经沉迷尝试各种效率软件，但没有一个能像
+org-mode 一样真的 <strong>改变</strong> 我的生活和习惯。我想应该有许多 Emacs 使用者，也是如此深深喜爱着 org-mode。</p>
+<p>大概，这篇文章应该就是只为 org-mode 而写，为 org-mode 爱好者而写。</p>
+<h2 id="为什么使用-ox-hugo">为什么使用 ox-hugo?</h2>
+<p>开始之前，何不看看这个：<a href="https://gohugo.io/tools/editors/">Hugo的编辑器插件</a>. Hugo 其实支持了很多的编辑器, Vim, VS
+Code, Atom, Sublime 等等。所以要不是真的 org-mode 爱好者，只要选择自己合适的插件就足够了。工具只是工具，适合自己的才是最好的。</p>
+<p>在 Emacs 上，Hugo 有两款插件，<a href="https://github.com/masasam/emacs-easy-hugo">easy-hugo</a> 和 <a href="https://ox-hugo.scripter.co/">ox-hugo</a>. 这两款插件的定位是不一样的，
+easy-hugo 是一款在 Emacs major-mode 上使用的博客内容管理工具，主要功能是通过一些快捷操作来实现原来需要在命令行上的重复操作。ox-hugo 从最最基本的功能上来说，就是一款 org 格式转 Markdown 格式的工具，听起来很普通的样子，但是它对功能的设计十分惊艳，完美地和 org-mode 的优点契合在一起。这也是我在使用之后，才发觉的。</p>
+<p>Org-mode 决不仅仅是一个 markup 语言，这只是它表面的皮毛罢了。你可以看看 ox-hugo 的开发者的观点：<a href="https://ox-hugo.scripter.co/doc/why-ox-hugo/">Why ox-hugo?</a></p>
+<h2 id="所思比所做更值得注意">所思比所做更值得注意</h2>
+<h3 id="想想究竟什么才适合你">想想究竟什么才适合你</h3>
+<p>对于自定义，从来就没有什么简单明了的“该怎么做”。
+<a href="https://ox-hugo.scripter.co/">官方文档</a>里对所有功能都有详细的介绍。对于达成一个特定的功能，ox-hugo 里是有很多选择的，这也就会造成一些特殊的困扰：究竟应该如何组合各个不同的功能。相信每个玩自定义的朋友在刚开始都会有类似麻烦。在做出选择之前，我通常会考虑一下几个问题：</p>
+<ul>
+<li>我对目前的操作流程满意吗？满意程度在将来会改变吗？</li>
+<li>我需要使用它的全部功能吗？</li>
+<li>哪几个功能是我真的需要的？</li>
+<li>在安装它之前，我能够通过其他地方的改进，来改善目前的操作流程吗？</li>
+<li>配置所需时间真的小于将来节省下来的时间吗？</li>
+</ul>
+<p>多多思考一下自定义功能的价值，还是很有用处的，有些时候需要适可而止。否则总有一天，你会感叹自己把大把的时间都浪费在了没有实际意义的配置上。</p>
+<h3 id="一些我的理由">一些我的理由</h3>
+<p>分享一下我决定使用 ox-hugo 的理由：</p>
+<ul>
+<li>我已经习惯于使用 org-mode 记笔记，我希望我可以把笔记内容直接复制粘贴作为博文的内容，而不需要改变格式。</li>
+<li>我的博客是中英双语，同时维护一篇博文的两个语言版本，意味着我得在两个不同的路径下管理两个文件。为了确保 Hugo 将两份文件视作同一博文的两个版本，很多时候我必须同时修改两个文件的内容，以避免冲突。假如我可以在一个文件中管理多个文本，效率会有很大的提升。</li>
+<li>当我用中文在 Emacs 里写作时，通常开着 word-warp mode，也就是自动换行。这会导致一个问题，就是当 Hugo 在将文档转为 html 文件时，每个自动换行的点都会多出一个空格，十分影响美观。ox-hugo 能够自动处理这个问题。</li>
+<li>假如我的所有博文都能放在同一个文件中，我就能很方便地统一管理 tag 以及其他设定了。</li>
+<li>假如我的 org 文件过大，我也可以再新建新的 org 文件，并且不会影响之前的任何已发布的设置。</li>
+<li>似乎迁移去更产品化的博客系统也能解决我存在的这些问题，可是我就不一定能很好地使用
+org-mode 和 evil-mode 键位。可能会出现许多新的麻烦。</li>
+<li>我已经有了许多 org-mode 下的笔记，我也计划将它们作为博文内容发布。因此，配置
+ox-hugo 一定能在将来这方面节省下我的时间。</li>
+</ul>
+<h2 id="我的配置">我的配置</h2>
+<h3 id="集合所有博文的-org-文件">集合所有博文的 org 文件</h3>
+<p>所有的博文都放在这份文件中，我只要在文件开头写上这些，就是全局设定。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"> #+HUGO_FRONT_MATTER_FORMAT: yaml
+ #+HUGO_BASE_DIR: ~<span style="font-style:italic">/myBlog/</span>
+ #+HUGO_AUTO_SET_LASTMOD: t
+</code></pre></div><h3 id="使用-yasnippet-制作模板">使用 YASnippet 制作模板</h3>
+<p><a href="https://joaotavora.github.io/yasnippet/snippet-development.html">Documentation</a> of write your own YASnippet template.</p>
+<p>Everytime I want to create a new post, I can just type
+<code>&lt;post</code> and then hit <code>TAB</code>.</p>
+<p>Here's my YASnippet template setting.</p>
+<pre><code class="language-snippet" data-lang="snippet"># -*- mode: snippet -*-
+# name: hugo-new-post
+# key: &lt;post
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+
+ * ${1:Post title} / ${2:博文标题}
+ ** TODO $1
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: ${3:File-name}
+ :EXPORT_HUGO_SECTION: en/post
+ :END:
+ Abstract
+ #+hugo: more
+ *** Heading 1
+ text
+
+ ** TODO $2
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: $3
+ :EXPORT_HUGO_SECTION: zh-CN/post
+ :EXPORT_HUGO_LOCALE: zh
+ :END:
+ 前言
+ #+hugo: more
+ *** 正文标题 1
+ 正文
+</code></pre><h2 id="写在最后">写在最后</h2>
+<p>这篇博文并没有涉及如何使用，我觉得官网文档已经描述的很清楚了，同时我也觉得，对于
+Emacs 上的自定义，写下我自己的配置用处也不是很大，因为这终究只是适合我个人的配置。我想，真的重要的，是在过程中的个人思考吧。</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://www.muscaestar.xyz/zh-cn/tags/blog/">blog</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/zh-cn/tags/hugo/">Hugo</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/zh-cn/tags/emacs/">Emacs</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/zh-cn/tags/org-mode/">org-mode</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">相关文章</h4>
+                  <ul>
+                
+                
+                      <li><a href="/zh-cn/post/multilanguage-blog-hugo-github/">用 Hugo 构建一个多语言博客（Github 部署）</a></li>
+                      
+                  </ul>
+
+                  
+                  
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.muscaestar.xyz/zh-cn/post/multilanguage-blog-hugo-github/" data-toggle="tooltip" data-placement="top" title="用 Hugo 构建一个多语言博客（Github 部署）">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/muscaestar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Muscaestar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.muscaestar.xyz/zh-cn/">Muscaestar&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="https://gohugo.io">Hugo v0.60.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://www.muscaestar.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://www.muscaestar.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

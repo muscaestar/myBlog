@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Muscaestar&#39;s Blog</title>
+    <link>https://www.muscaestar.xyz/zh-cn/</link>
+    <description>Recent content on Muscaestar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 29 Dec 2019 20:51:00 +1100</lastBuildDate>
+    
+	<atom:link href="https://www.muscaestar.xyz/zh-cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用 Emacs 来管理 Hugo 博客</title>
+      <link>https://www.muscaestar.xyz/zh-cn/post/emacs-ox-hugo-organize-blog/</link>
+      <pubDate>Sun, 29 Dec 2019 20:51:00 +1100</pubDate>
+      
+      <guid>https://www.muscaestar.xyz/zh-cn/post/emacs-ox-hugo-organize-blog/</guid>
+      <description>&lt;p&gt;Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
+      <link>https://www.muscaestar.xyz/zh-cn/page/about/</link>
+      <pubDate>Sat, 28 Dec 2019 16:45:29 +1100</pubDate>
+      
+      <guid>https://www.muscaestar.xyz/zh-cn/page/about/</guid>
+      <description>用“无知无畏”来形容几年前的文转理的决定，不足为过。但现在我确信，代码和编程会是自己一生的热爱，脚下这条路虽然困难重重，但是对目标的明确追求，一定好过曾经的迷茫享乐。目前 IT 硕士在读，我想用博客记录下自己的热情与努力。
+我非常喜欢 Vim 和 Doom-Emacs，愿意花费很多时间调配它们。现在意识到，工具永远只是工具，才终于沉下心来，去看书，看源码，苦练基本功。
+就从算法与数据结构开始&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>用 Hugo 构建一个多语言博客（Github 部署）</title>
+      <link>https://www.muscaestar.xyz/zh-cn/post/multilanguage-blog-hugo-github/</link>
+      <pubDate>Fri, 27 Dec 2019 17:37:00 +1100</pubDate>
+      
+      <guid>https://www.muscaestar.xyz/zh-cn/post/multilanguage-blog-hugo-github/</guid>
+      <description>&lt;p&gt;Hugo 是一个非常好用的静态网站生成器，也适合用来创建简单的博客。它有非常多的功能，并且支持各种 Markdown 语言。本篇文章主要用来记录本博客的创建，主要内容有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装和部署&lt;/li&gt;
+&lt;li&gt;设置多语言&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

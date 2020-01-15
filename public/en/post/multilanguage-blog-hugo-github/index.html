@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Start a Multi Language Blog with Hugo on Github Pages - Muscaestar&#39;s Blog</title>
+  <meta name="description" content="Hugo is a handy framework for generating static website, which suits for normal
+blog. You can easily write blogs with various markdown languages and organize
+them with lots of features. This article will show you how I create this blog with it. I will focus on:
+
+Installation and Deployment
+Multi-Language Setting
+">
+  <meta name="author" content="Muscaestar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Muscaestar\x27s Blog",
+    
+    "url": "https:\/\/www.muscaestar.xyz\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/www.muscaestar.xyz\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/www.muscaestar.xyz\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/www.muscaestar.xyz\/en\/post\/multilanguage-blog-hugo-github\/",
+          "name": "Start a multi language blog with hugo on github pages"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "[Muscaestar]"
+  },
+  "headline": "Start a Multi Language Blog with Hugo on Github Pages",
+  "description" : "Hugo is a handy framework for generating static website, which suits for normal blog. You can easily write blogs with various markdown languages and organize them with lots of features. This article will show you how I create this blog with it. I will focus on:\n Installation and Deployment Multi-Language Setting ",
+  "inLanguage" : "en",
+  "wordCount":  1314 ,
+  "datePublished" : "2019-12-27T17:37:00",
+  "dateModified" : "2019-12-27T17:37:00",
+  "image" : "https:\/\/www.muscaestar.xyz\/img\/rika-avatar-480.jpeg",
+  "keywords" : [ "blog, Hugo" ],
+  "mainEntityOfPage" : "https:\/\/www.muscaestar.xyz\/en\/post\/multilanguage-blog-hugo-github\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/www.muscaestar.xyz\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/www.muscaestar.xyz\/img\/rika-avatar-480.jpeg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Start a Multi Language Blog with Hugo on Github Pages" />
+<meta property="og:description" content="Hugo is a handy framework for generating static website, which suits for normal
+blog. You can easily write blogs with various markdown languages and organize
+them with lots of features. This article will show you how I create this blog with it. I will focus on:
+
+Installation and Deployment
+Multi-Language Setting
+">
+<meta property="og:image" content="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" />
+<meta property="og:url" content="https://www.muscaestar.xyz/en/post/multilanguage-blog-hugo-github/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Muscaestar&#39;s Blog" />
+
+  <meta name="twitter:title" content="Start a Multi Language Blog with Hugo on Github Pages" />
+  <meta name="twitter:description" content="Hugo is a handy framework for generating static website, which suits for normal
+blog. You can easily write blogs with various markdown languages and organize
+them with lots of features. This article …">
+  <meta name="twitter:image" content="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://www.muscaestar.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.60.1" />
+  <link rel="alternate" href="https://www.muscaestar.xyz/en/index.xml" type="application/rss+xml" title="Muscaestar&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://www.muscaestar.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://www.muscaestar.xyz/css/syntax.css" /><link rel="stylesheet" href="https://www.muscaestar.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.muscaestar.xyz/en/">Muscaestar&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/en/">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">Projects</a>
+              <div class="navlinks-children">
+                
+                  <a href="/en/">In Progress</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/en/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/en/tags">Tags</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+              
+                
+                  <a href="/zh-cn" lang="zh-cn">简体中文</a>
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Muscaestar&#39;s Blog" href="https://www.muscaestar.xyz/en/">
+            <img class="avatar-img" src="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" alt="Muscaestar&#39;s Blog" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Start a Multi Language Blog with Hugo on Github Pages</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;December 27, 2019
+  
+    &nbsp;(Modified on December 29, 2019)
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1314&nbsp;words
+  
+  
+  &nbsp;&bull;&nbsp;Other languages: <a href="https://www.muscaestar.xyz/zh-cn/post/multilanguage-blog-hugo-github/" lang="zh-cn">简体中文</a>
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Hugo is a handy framework for generating static website, which suits for normal
+blog. You can easily write blogs with various markdown languages and organize
+them with lots of features. This article will show you how I create this blog with it. I will focus on:</p>
+<ol>
+<li>Installation and Deployment</li>
+<li>Multi-Language Setting</li>
+</ol>
+<h2 id="why-hugo">Why Hugo?</h2>
+<p>Fast. Flexible. Open Source. Go&hellip; Plenty of reasons for trying it. Actually, I
+don't care. For me, the key point is that it works well with Emacs, org-mode.
+But this article won't mention any of Emacs. Before I integrate Hugo with Emacs,
+what I did is just using Hugo like a normal person. And it's just soooo easy and
+convenient to use.</p>
+<p>So, the purpose of this article is just to show you how to use Hugo with just a
+little knowledge about command line.</p>
+<h2 id="before-start">Before start</h2>
+<p>Three things to ensure a smooth experience:</p>
+<ol>
+<li>Basic knowledge of shell</li>
+<li>Ability to check official document</li>
+<li>Basic usage of Github</li>
+</ol>
+<p>Operating System: <code>macOS</code></p>
+<h2 id="installation-and-deployment">Installation and Deployment</h2>
+<h3 id="install">Install</h3>
+<p>Run the commands below. Checkout document for details: <a href="https://gohugo.io/getting-started/quick-start/">Quick Start</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install hugo    <span style="color:#75715e"># Homebrew</span>
+$ hugo version         <span style="color:#75715e"># Verify, in my case v0.60.1</span>
+$ hugo new site &lt;projectName&gt; <span style="color:#75715e"># Create project directory</span>
+$ cd &lt;projectName&gt;     <span style="color:#75715e"># Go to the new directory</span>
+$ git init             <span style="color:#75715e"># Version control</span>
+</code></pre></div><p>Then make it a Github repository. No further instruction here.</p>
+<h3 id="add-theme">Add theme</h3>
+<p>In my case, I choose <a href="https://themes.gohugo.io/beautifulhugo/">Beautiful Hugo</a>
+as my theme.</p>
+<p>Notice that in my configurations below, some of them maybe required specifically by this theme.</p>
+<p>Install the theme:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+<span style="color:#75715e"># use theme&#39;s example config file as a start point</span>
+$ cat themes/beautifulhugo/exampleSite/config.toml &gt;&gt; config.toml
+</code></pre></div><p>Before you modify the configuration now, you may need to explore the
+files under <code>&lt;project&gt;/themes/beautifulhugo/exampleSite</code>. It helps you to
+understand the whole structure.</p>
+<p>Play around with your <code>config.toml</code>. Refer to document for more details:
+<a href="https://gohugo.io/getting-started/configuration/">Configuration</a>.</p>
+<p><strong>*Note: you need to set <code>baseURL</code> right. In my case, the value is in a format
+like this <code>&quot;https://&lt;username&gt;.github.io/&lt;projectName&gt;/&quot;</code></strong></p>
+<h3 id="test-basic-usage">Test basic usage</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo new post/testing-post.md <span style="color:#75715e"># Create a new post</span>
+</code></pre></div><p>The new file will locate under <code>&lt;project&gt;/content/post/</code>.</p>
+<p><strong>*BeautifulHugo specification: to make some functions work, you must use the
+words <code>page</code> and <code>post</code> as the directory.</strong></p>
+<p>Now start the server to check the layout:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ hugo server -D <span style="color:#75715e"># Start the Hugo server locally</span>
+</code></pre></div><p>Go to <a href="http://localhost:1313/">http://localhost:1313/</a> (or <a href="http://localhost:1313/projectName/">http://localhost:1313/projectName/</a> in my
+case) to check the blog. Usually it look wired, so keep modifying <code>config.toml</code> until you're happy (Please make your life easy. No need to be perfect).</p>
+<p>If everything works fine, you can now start to publish your blog on
+the Internet. Let's deploy it on Github pages.</p>
+<h3 id="deploy-the-blog">Deploy the blog</h3>
+<p>There're lots of ways of doing it. In my case, I choose to deploy the blog on
+project page and use <code>gh-pages</code> branch. The official document describes it quite
+comprehensively:</p>
+<ul>
+<li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">General Description</a></li>
+<li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#deployment-of-project-pages-from-your-gh-pages-branch">Specific to my case</a> (use <code>origin</code> to replace <code>upstream</code>)</li>
+</ul>
+<p>Must follow the document <strong>carefully</strong>, and you will finally finish setting up
+the gh-pages and get a script named <code>publish_to_ghpages.sh</code> to automate your
+future publishing.</p>
+<p><strong>*Notice that in my case, it needs to use <code>origin</code> to replace <code>upstream</code> in the command
+provided in document.</strong> As the master branch of my remote repo is named <code>origin</code>.</p>
+<h3 id="simple-workflow">Simple workflow</h3>
+<p>After it's successfully deployed, go to the github page of this repo, you shall
+see 2 branches. <code>gh-pages</code> branch is treated as the published site and <code>master</code>
+branch is your working branch. By doing so, the source files and rendered files
+are separated, which helps maintenance and version control.</p>
+<p>For the workflow of writing and posting an article to your blog:</p>
+<ol>
+<li>run <code>hugo new post/Article-Name.md</code></li>
+<li>write the article</li>
+<li>run <code>hugo server -D</code> and check the final product</li>
+<li>before publishing, in the article's front matter, set <code>draft: false</code></li>
+<li>in master branch, commit the new changes</li>
+<li>run <code>./publish_to_ghpages.sh</code> (the shell script you created)</li>
+</ol>
+<p>Done.</p>
+<h2 id="multi-language-setting">Multi Language Setting</h2>
+<p>Beautiful Hugo provides some functions to support multi languages, and so does
+other themes. Here I introduce my settings:</p>
+<ul>
+<li>English as default</li>
+<li>Simplified Chinese as secondary</li>
+<li>Different main menu for each language</li>
+<li>An option for switching language, placed in main menu, top right corner. (Supported by Beautiful Hugo)</li>
+<li>For each article, an option for switching language, placed under the title. (Supported by Beautiful Hugo)</li>
+</ul>
+<p>The files needed to be changed:</p>
+<ul>
+<li><code>config.toml</code></li>
+<li><code>nav.html</code></li>
+<li>structure under <code>content/</code></li>
+<li><code>single.html</code>, <code>terms.html</code>, <code>post_preview.html</code></li>
+</ul>
+<h3 id="modify-config-dot-toml">Modify <code>config.toml</code></h3>
+<p>Details in official document: <a href="https://gohugo.io/content-management/multilingual/">Multilingual</a></p>
+<p>Here's the excerpt of my <code>config.toml</code>, it sets the languages and their main
+menu.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">DefaultContentLanguage</span> = <span style="color:#e6db74">&#34;en&#34;</span>
+<span style="color:#a6e22e">DefaultContentLanguageInSubdir</span> = <span style="color:#66d9ef">true</span>
+[<span style="color:#a6e22e">languages</span>]
+  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>]
+    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content/en&#34;</span> <span style="color:#75715e">#English</span>
+    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;English&#34;</span> <span style="color:#75715e"># Name shown in the main menu</span>
+    <span style="color:#a6e22e">subtitle</span> = <span style="color:#e6db74">&#34;This is subtitle for this website&#34;</span>
+    [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">params</span>]
+      <span style="color:#a6e22e">linkedin</span> = <span style="color:#e6db74">&#34;https://muscaestar.github.io/myBlog/en/&#34;</span>
+    [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Blog&#34;</span>
+        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;&#34;</span>
+        <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+    [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;About&#34;</span>
+        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;page/about/&#34;</span>
+        <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">3</span>
+    [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Tags&#34;</span>
+        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;tags&#34;</span>
+        <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">3</span>
+  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">zh</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">CN</span>]
+    <span style="color:#a6e22e">contentDir</span> = <span style="color:#e6db74">&#34;content/zh-CN&#34;</span> <span style="color:#75715e">#Simplified Chinese</span>
+    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">2</span>
+    <span style="color:#a6e22e">languageName</span> = <span style="color:#e6db74">&#34;简体中文&#34;</span> <span style="color:#75715e"># Name shown in the main menu</span>
+    <span style="color:#a6e22e">subtitle</span> = <span style="color:#e6db74">&#34;副标题&#34;</span>
+    [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">zh</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">CN</span>.<span style="color:#a6e22e">params</span>]
+      <span style="color:#a6e22e">linkedin</span> = <span style="color:#e6db74">&#34;https://muscaestar.github.io/myBlog/zh-CN/&#34;</span>
+    [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">zh</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">CN</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;博客&#34;</span>
+        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;&#34;</span>
+        <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+    [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">zh</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">CN</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;关于&#34;</span>
+        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;page/about/&#34;</span>
+        <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">3</span>
+    [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">zh</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">CN</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;标签&#34;</span>
+        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;tags&#34;</span>
+        <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">3</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="modify-nav-dot-html">Modify <code>nav.html</code></h3>
+<p><code>nav.html</code> is a partial template. For more details, go to: <a href="https://gohugo.io/templates/partials/">Partial Templates</a>. Partial template can be placed in
+<code>layouts/partials/</code> or <code>themes/&lt;themename&gt;/layouts/partials/</code>.</p>
+<p><code>nav.html</code> is a template provided by Beautiful Hugo, which sets the format of
+main menu. It works by default, but in my case, since baseURL is set as
+<code>&lt;username&gt;.github.io/&lt;projectName&gt;</code>, there's one place need to be changed.</p>
+<p>To modify the templates provided by the theme, I recommend to do this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># make a copy of theme&#39;s nav.html and place it in your own place</span>
+$ cp themes/beautifulhugo/layouts/partials/nav.html layouts/partials/nav.html
+</code></pre></div><p>Then modify the <code>nav.html</code> under <code>layouts/partials/</code>. Hugo engine will read your
+template instead of the theme's. (More details about <a href="https://gohugo.io/templates/lookup-order/">Hugo's Lookup Order</a> )</p>
+<p>Here's the excerpt of my <code>nav.html</code>. In my case, the baseURL is
+<code>muscaestar.github.io/myBlog/</code>, so I'll add <code>/myBlog/</code> to the original code. See
+line 39, 48.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Site.IsMultiLingual }}
+    {{ if ge (len .Site.Languages) 3 }}
+    &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navlinks-container&#34;</span>&gt;
+        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navlinks-parent&#34;</span>&gt;{{ i18n &#34;languageSwitcherLabel&#34; }}&lt;/<span style="color:#f92672">a</span>&gt;
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navlinks-children&#34;</span>&gt;
+        {{ range .Site.Languages }}
+            {{ if not (eq .Lang $.Site.Language.Lang) }}
+<span style="display:block;width:100%;background-color:#3c3d38">            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/myBlog/{{ .Lang }}&#34;</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Lang }}&#34;</span>&gt;{{ default .Lang .LanguageName }}&lt;/<span style="color:#f92672">a</span>&gt;
+</span>            {{ end }}
+        {{ end }}
+        &lt;/<span style="color:#f92672">div</span>&gt;
+    &lt;/<span style="color:#f92672">li</span>&gt;
+    {{ else }}
+    &lt;<span style="color:#f92672">li</span>&gt;
+        {{ range .Site.Languages }}
+        {{ if not (eq .Lang $.Site.Language.Lang) }}
+<span style="display:block;width:100%;background-color:#3c3d38">            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/myBlog/{{ .Lang }}&#34;</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Lang }}&#34;</span>&gt;{{ default .Lang .LanguageName }}&lt;/<span style="color:#f92672">a</span>&gt;
+</span>        {{ end }}
+        {{ end }}
+    &lt;/<span style="color:#f92672">li</span>&gt;
+    {{ end }}
+{{ end }}</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="modify-structure-under-content">Modify structure under <code>content/</code></h3>
+<p>The file structure must match with the <code>contentDir</code> variable specified in
+<code>config.toml</code>. In my case, the structure is set as below:</p>
+<pre><code class="language-nil" data-lang="nil">content/      content/
+└── en/       └── zh-CN/
+    ├── page/     ├── page/
+    └── post/     └── post/
+</code></pre><h3 id="modify-single-dot-html-terms-dot-html-post-preview-dot-html--updated">Modify <code>single.html</code>, <code>terms.html</code>, <code>post_preview.html</code> (Updated)</h3>
+<p>The problem comes with the variable <code>.Site.LanguagePrefix</code>, for some reasons, it
+doesn't return complete baseURL. The url of tags will be affected by this problem. The solution is to use <code>.Site.Language.Lang</code>.
+Here're the details:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cp themes/beautifulhugo/layouts/_default/single.html layouts/_default/single.html
+$ cp themes/beautifulhugo/layouts/_default/terms.html layouts/_default/terms.html
+$ cp themes/beautifulhugo/layouts/partials/post_preview.html layouts/partials/post_preview.html
+</code></pre></div><p>Then use <code>.Site.Language.Lang</code> to replace <code>.Site.LanguagePrefix</code> in the
+following files:</p>
+<ul>
+<li><code>layouts/_default/single.html</code></li>
+<li><code>layouts/_default/terms.html</code></li>
+<li><code>layouts/partials/post_preview.html</code></li>
+</ul>
+<h2 id="in-the-end">In the End</h2>
+<p>So far, a multi language blog is successfully built. It already has a pretty
+easy workflow for blogging, and it's actually enough for daily use.
+For explorers, there're still plenty of advanced functionalities of
+Hugo, and for me, I'll start working on the integration of Hugo and org-mode in Emacs.</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://www.muscaestar.xyz/en/tags/blog/">blog</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/en/tags/hugo/">Hugo</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                      <li><a href="/en/post/emacs-ox-hugo-organize-blog/">Use Emacs to Organize Hugo Blog</a></li>
+                      
+                  </ul>
+
+                  
+                  
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="https://www.muscaestar.xyz/en/post/emacs-ox-hugo-organize-blog/" data-toggle="tooltip" data-placement="top" title="Use Emacs to Organize Hugo Blog">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/muscaestar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Muscaestar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.muscaestar.xyz/en/">Muscaestar&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.60.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://www.muscaestar.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://www.muscaestar.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

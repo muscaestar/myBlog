@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Use Emacs to Organize Hugo Blog - Muscaestar&#39;s Blog</title>
+  <meta name="description" content="Emacs is a magical &lsquo;software&rsquo; and you can do &lsquo;everything&rsquo; in it, of course writing
+and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article will introduce org-mode and ox-hugo to
+make Hugo better for Emacs users.">
+  <meta name="author" content="Muscaestar"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Muscaestar\x27s Blog",
+    
+    "url": "https:\/\/www.muscaestar.xyz\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/www.muscaestar.xyz\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/www.muscaestar.xyz\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/www.muscaestar.xyz\/en\/post\/emacs-ox-hugo-organize-blog\/",
+          "name": "Use emacs to organize hugo blog"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "[Muscaestar]"
+  },
+  "headline": "Use Emacs to Organize Hugo Blog",
+  "description" : "Emacs is a magical \x26lsquo;software\x26rsquo; and you can do \x26lsquo;everything\x26rsquo; in it, of course writing and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article will introduce org-mode and ox-hugo to make Hugo better for Emacs users.\n",
+  "inLanguage" : "en",
+  "wordCount":  963 ,
+  "datePublished" : "2019-12-29T17:51:00",
+  "dateModified" : "2019-12-29T17:51:00",
+  "image" : "https:\/\/www.muscaestar.xyz\/img\/rika-avatar-480.jpeg",
+  "keywords" : [ "blog, Hugo, Emacs, org-mode" ],
+  "mainEntityOfPage" : "https:\/\/www.muscaestar.xyz\/en\/post\/emacs-ox-hugo-organize-blog\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/www.muscaestar.xyz\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/www.muscaestar.xyz\/img\/rika-avatar-480.jpeg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Use Emacs to Organize Hugo Blog" />
+<meta property="og:description" content="Emacs is a magical &lsquo;software&rsquo; and you can do &lsquo;everything&rsquo; in it, of course writing
+and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article will introduce org-mode and ox-hugo to
+make Hugo better for Emacs users.">
+<meta property="og:image" content="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" />
+<meta property="og:url" content="https://www.muscaestar.xyz/en/post/emacs-ox-hugo-organize-blog/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Muscaestar&#39;s Blog" />
+
+  <meta name="twitter:title" content="Use Emacs to Organize Hugo Blog" />
+  <meta name="twitter:description" content="Emacs is a magical &lsquo;software&rsquo; and you can do &lsquo;everything&rsquo; in it, of course writing
+and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article …">
+  <meta name="twitter:image" content="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://www.muscaestar.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.60.1" />
+  <link rel="alternate" href="https://www.muscaestar.xyz/en/index.xml" type="application/rss+xml" title="Muscaestar&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://www.muscaestar.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://www.muscaestar.xyz/css/syntax.css" /><link rel="stylesheet" href="https://www.muscaestar.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.muscaestar.xyz/en/">Muscaestar&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/en/">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">Projects</a>
+              <div class="navlinks-children">
+                
+                  <a href="/en/">In Progress</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/en/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/en/tags">Tags</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+              
+                
+                  <a href="/zh-cn" lang="zh-cn">简体中文</a>
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Muscaestar&#39;s Blog" href="https://www.muscaestar.xyz/en/">
+            <img class="avatar-img" src="https://www.muscaestar.xyz/img/rika-avatar-480.jpeg" alt="Muscaestar&#39;s Blog" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Use Emacs to Organize Hugo Blog</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;December 29, 2019
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;963&nbsp;words
+  
+  
+  &nbsp;&bull;&nbsp;Other languages: <a href="https://www.muscaestar.xyz/zh-cn/post/emacs-ox-hugo-organize-blog/" lang="zh-cn">简体中文</a>
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Emacs is a magical &lsquo;software&rsquo; and you can do &lsquo;everything&rsquo; in it, of course writing
+and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article will introduce org-mode and ox-hugo to
+make Hugo better for Emacs users.</p>
+<h2 id="why-emacs-org-mode">Why Emacs? Org-mode?</h2>
+<p>Almost every programmer have at least heard the famous &lsquo;GNU/Emacs&rsquo;, or the joke about the
+Editor War between Vim users and Emacs users. Both of them seem to be very proud of
+mastering at least one of these &lsquo;highly customizable&rsquo; &lsquo;tough-learning&rsquo; &lsquo;COOL&rsquo; text
+editor. Don't get me wrong. Vim and Emacs are great, and I enjoy using both of
+them. But to be honest, with the rise of modern IDEs and their &lsquo;not bad&rsquo;
+plugins, those actual Vim users and Emacs user are gradually becoming the minority group.
+Admit it, out-of-the-box is the new black.</p>
+<p>So, why am I bother writing this article introducing a tiny customization
+package in Emacs?
+Because even though I'm kinda happy with this OOTB world, I still realize that
+nobody really feels satisfied with it. Yes, modern software is so convenient.
+But the interesting thing is, for example, WHY there's no alternatives for
+org-mode?</p>
+<p>Finally, here comes the hero, the Org-mode. I think org-mode is the reason
+that I insist on sticking with Emacs. My schedules, projects, todos, study notes with plenty of
+runnable codes, sudden crazy ideas&hellip; so much programming-related or not related
+stuffs are well organized with it. It becomes my second brain. It <strong>organizes</strong> my life.
+So cliché, but so true.</p>
+<p>So I write this article. It's an introduction of some tiny features of the
+tremendous Emacs. It's my &lsquo;love letter&rsquo; to the lovely org-mode. I wish I could meet you
+earlier. You literally change my life.</p>
+<p>OK, that's enough. Let's jump back to the topic.</p>
+<h2 id="why-ox-hugo">Why ox-hugo?</h2>
+<p>First of all, checkout the official recommendation of <a href="https://gohugo.io/tools/editors/">Hugo's editor plugins</a>. Yes,
+there're many other plugins, in Vim, VS Code, Atom, Sublime&hellip; If you don't feel
+anything with
+org-mode, its time to leave. I believe other plugins should work fine
+and &lsquo;more OOTB&rsquo;.</p>
+<p>For Emacs user, there're two packages, <a href="https://github.com/masasam/emacs-easy-hugo">easy-hugo</a> or <a href="https://ox-hugo.scripter.co/">ox-hugo</a>. Here's what I
+thought. Easy-hugo is made for Emacs, and ox-hugo is made specifically for
+org-mode. Easy-hugo helps you dealing with blog-related file management and configurations,
+using some shortcuts to replace redundant CLI works. While, ox-hugo goes a different
+direction, which is basically an org-mode exporter. It is the details of
+ox-hugo's features design that impressed me. In my opinion, ox-hugo's design match some of the true
+philosophies of org-mode.</p>
+<p>&ldquo;Using Org just as a markup like Markdown is a miniscule part of its complete
+feature-set.&rdquo; &ndash; <a href="https://ox-hugo.scripter.co/doc/why-ox-hugo/">Why ox-hugo?</a></p>
+<h2 id="it-is-more-about-your-thinking-than-doing">It is MORE about your thinking than doing</h2>
+<h3 id="design-your-own-structure">Design your own structure</h3>
+<p>When it comes to customization, there's no simple HOW TO.
+Ox-hugo is well documented in its <a href="https://ox-hugo.scripter.co/">website</a>. It offers you lots of functions, and
+sometimes people may become confused about their combination.
+If you are familiar with self-configuration, you don't need my saying.
+If you are not, maybe you can ask yourself these questions:</p>
+<ul>
+<li>Am I satisfied with my current workflow? How about in the nearly future?</li>
+<li>Do I need to use all the functions it offers?</li>
+<li>Which functions are my actual needs?</li>
+<li>Can I improve my workflow without installing this package?</li>
+<li>(configuration time) &lt; (time saved for the future) Really?</li>
+</ul>
+<p>It is worthy to dig your mind, and finally find your true desire. Otherwise,
+you just jumped into an infinite editor customization loop.</p>
+<h3 id="here-s-my-thinking">Here's my thinking</h3>
+<p>My reason for using it:</p>
+<ul>
+<li>I'm used to taking notes in org-mode, I wish I could just copy my notes as
+some parts of my posts without any changes in the format.</li>
+<li>My blog will be maintained in two languages, which means for each post,
+there're 2 files with same file name while placing in different directories.
+To keep them linked, everytime I change one, I should make sure the other is
+also changed. The two files are actually one post, so I wish I could manage
+them together.</li>
+<li>I write blog in Chinese, but with Emacs&rsquo; auto word-wrap mode, each line
+creates an unnecessary space when finally rendered to html file. It needs to
+be fixed.</li>
+<li>If I could organize all my post in just one org file. So that I could easily
+do tags, modified time, and so on.</li>
+<li>If the only one org file becomes too big, I could create another, and it won't
+affect any previous structures.</li>
+<li>How about move to another dynamic blog framework, so many automation problems will
+be solved. But can I use evil-mode? org-mode? It may produce more
+configuration time.</li>
+<li>I already got lots of notes written in org mode, and I'm planning to make them my
+future posts. So with ox-hugo, it will definitely save my time.</li>
+</ul>
+<h2 id="demo-of-mine">Demo of mine</h2>
+<h3 id="the-only-one-org-file">The only one org file</h3>
+<p>On the top of the org file, I put these declarations at the head as global settings.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"> #+HUGO_FRONT_MATTER_FORMAT: yaml
+ #+HUGO_BASE_DIR: ~<span style="font-style:italic">/myBlog/</span>
+ #+HUGO_AUTO_SET_LASTMOD: t
+</code></pre></div><h3 id="use-yasnippet-to-create-blank-template">Use YASnippet to create blank template</h3>
+<p><a href="https://joaotavora.github.io/yasnippet/snippet-development.html">Documentation</a> of write your own YASnippet template.</p>
+<p>Everytime I want to create a new post, I can just type
+<code>&lt;post</code> and then hit <code>TAB</code>.</p>
+<p>Here's my YASnippet template setting.</p>
+<pre><code class="language-snippet" data-lang="snippet"># -*- mode: snippet -*-
+# name: hugo-new-post
+# key: &lt;post
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+
+ * ${1:Post title} / ${2:博文标题}
+ ** TODO $1
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: ${3:File-name}
+ :EXPORT_HUGO_SECTION: en/post
+ :END:
+ Abstract
+ #+hugo: more
+ *** Heading 1
+ text
+
+ ** TODO $2
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: $3
+ :EXPORT_HUGO_SECTION: zh-CN/post
+ :EXPORT_HUGO_LOCALE: zh
+ :END:
+ 前言
+ #+hugo: more
+ *** 正文标题 1
+ 正文
+</code></pre><h2 id="in-the-end">In the End</h2>
+<p>This article is not about HOW TO, because I believe it is meaningless to write
+&lsquo;do-what-I-say&rsquo; article in terms of customization with Emacs. My configuration
+only works in my case, what matters is the process of reaching it.</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://www.muscaestar.xyz/en/tags/blog/">blog</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/en/tags/hugo/">Hugo</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/en/tags/emacs/">Emacs</a>&nbsp;
+            
+              <a href="https://www.muscaestar.xyz/en/tags/org-mode/">org-mode</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                      <li><a href="/en/post/multilanguage-blog-hugo-github/">Start a Multi Language Blog with Hugo on Github Pages</a></li>
+                      
+                  </ul>
+
+                  
+                  
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.muscaestar.xyz/en/post/multilanguage-blog-hugo-github/" data-toggle="tooltip" data-placement="top" title="Start a Multi Language Blog with Hugo on Github Pages">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/muscaestar" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Muscaestar
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2019
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.muscaestar.xyz/en/">Muscaestar&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.60.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://www.muscaestar.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://www.muscaestar.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
