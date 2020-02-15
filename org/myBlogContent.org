@@ -1,0 +1,977 @@
+#+HUGO_FRONT_MATTER_FORMAT: yaml
+#+AUTHOR: Muscaestar
+#+HUGO_BASE_DIR: ~/myBlog/
+#+HUGO_AUTO_SET_LASTMOD: t
+
+* About Me / 关于
+** About Me
+:PROPERTIES:
+:EXPORT_FILE_NAME: about
+:EXPORT_HUGO_SECTION: en/page
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle Muscaestar
+:END:
+I'm a newbie who bumped into the programming world a few years ago and decided to
+stay forever. Now I'm studying IT in University. This blog shall witness my passion
+and efforts.
+
+I love Vim and Doom-Emacs. But since I realized these endless tool-customizing time didn't actually
+benefit my core skills, I've started to focus on 'decent real-matters'.
+
+Start from, data structures and algorithms...
+
+** 关于
+:PROPERTIES:
+:EXPORT_FILE_NAME: about
+:EXPORT_HUGO_SECTION: zh-CN/page
+:EXPORT_HUGO_LOCALE: zh
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle Muscaestar
+:END:
+用“无知无畏”来形容几年前的文转理的决定，不足为过。但现在我确信，代码和编程会是自己一生
+的热爱，脚下这条路虽然困难重重，但是对目标的明确追求，一定好过曾经的迷茫享乐。目
+前 IT 硕士在读，我想用博客记录下自己的热情与努力。
+
+我非常喜欢 Vim 和 Doom-Emacs，愿意花费很多时间调配它们。现在意识到，工具永
+远只是工具，才终于沉下心来，去看书，看源码，苦练基本功。
+
+就从算法与数据结构开始...
+* DONE Start a Multi Language Blog with Hugo on Github Pages / 用 Hugo 构建一个多语言博客（Github 部署） :blog:Hugo:
+CLOSED: [2019-12-29 Sun 17:50]
+** DONE Start a Multi Language Blog with Hugo on Github Pages
+CLOSED: [2019-12-27 Sun 17:37]
+:PROPERTIES:
+:EXPORT_FILE_NAME: MultiLanguage-Blog-Hugo-Github
+:EXPORT_HUGO_SECTION: en/post
+:END:
+Hugo is a handy framework for generating static website, which suits for normal
+blog. You can easily write blogs with various markdown languages and organize
+them with lots of features. This article will show you how I create this blog with it. I will focus on:
+1. Installation and Deployment
+2. Multi-Language Setting
+#+hugo: more
+*** Why Hugo?
+Fast. Flexible. Open Source. Go... Plenty of reasons for trying it. Actually, I
+don't care. For me, the key point is that it works well with Emacs, org-mode.
+But this article won't mention any of Emacs. Before I integrate Hugo with Emacs,
+what I did is just using Hugo like a normal person. And it's just soooo easy and
+convenient to use.
+
+So, the purpose of this article is just to show you how to use Hugo with just a
+little knowledge about command line.
+
+*** Before start
+Three things to ensure a smooth experience:
+1. Basic knowledge of shell
+2. Ability to check official document
+3. Basic usage of Github
+
+Operating System: =macOS=
+
+*** Installation and Deployment
+**** Install
+Run the commands below. Checkout document for details: [[https://gohugo.io/getting-started/quick-start/][Quick Start]]
+#+BEGIN_SRC shell
+$ brew install hugo    # Homebrew
+$ hugo version         # Verify, in my case v0.60.1
+$ hugo new site <projectName> # Create project directory
+$ cd <projectName>     # Go to the new directory
+$ git init             # Version control
+#+END_SRC
+Then make it a Github repository. No further instruction here.
+
+**** Add theme
+In my case, I choose [[https://themes.gohugo.io/beautifulhugo/][Beautiful Hugo]]
+as my theme.
+
+Notice that in my configurations below, some of them maybe required specifically by this theme.
+
+Install the theme:
+#+BEGIN_SRC shell
+$ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+# use theme's example config file as a start point
+$ cat themes/beautifulhugo/exampleSite/config.toml >> config.toml
+#+END_SRC
+Before you modify the configuration now, you may need to explore the
+files under =<project>/themes/beautifulhugo/exampleSite=. It helps you to
+understand the whole structure.
+
+Play around with your =config.toml=. Refer to document for more details:
+[[https://gohugo.io/getting-started/configuration/][Configuration]].
+
+**Note: you need to set =baseURL= right. In my case, the value is in a format
+like this ="https://<username>.github.io/<projectName>/"=*
+
+**** Test basic usage
+#+BEGIN_SRC shell
+$ hugo new post/testing-post.md # Create a new post
+#+END_SRC
+The new file will locate under =<project>/content/post/=.
+
+**BeautifulHugo specification: to make some functions work, you must use the
+words =page= and =post= as the directory.*
+
+Now start the server to check the layout:
+#+BEGIN_SRC shell
+$ hugo server -D # Start the Hugo server locally
+#+END_SRC
+Go to http://localhost:1313/ (or http://localhost:1313/projectName/ in my
+case) to check the blog. Usually it look wired, so keep modifying =config.toml= until you're happy (Please make your life easy. No need to be perfect).
+
+If everything works fine, you can now start to publish your blog on
+the Internet. Let's deploy it on Github pages.
+
+**** Deploy the blog
+There're lots of ways of doing it. In my case, I choose to deploy the blog on
+project page and use =gh-pages= branch. The official document describes it quite
+comprehensively:
+- [[https://gohugo.io/hosting-and-deployment/hosting-on-github/][General Description]]
+- [[https://gohugo.io/hosting-and-deployment/hosting-on-github/#deployment-of-project-pages-from-your-gh-pages-branch][Specific to my case]] (use =origin= to replace =upstream=)
+
+Must follow the document *carefully*, and you will finally finish setting up
+the gh-pages and get a script named =publish_to_ghpages.sh= to automate your
+future publishing.
+
+**Notice that in my case, it needs to use =origin= to replace =upstream= in the command
+provided in document.* As the master branch of my remote repo is named =origin=.
+
+**** Simple workflow
+After it's successfully deployed, go to the github page of this repo, you shall
+see 2 branches. =gh-pages= branch is treated as the published site and =master=
+branch is your working branch. By doing so, the source files and rendered files
+are separated, which helps maintenance and version control.
+
+For the workflow of writing and posting an article to your blog:
+1. run =hugo new post/Article-Name.md=
+2. write the article
+3. run =hugo server -D= and check the final product
+4. before publishing, in the article's front matter, set =draft: false=
+5. in master branch, commit the new changes
+6. run =./publish_to_ghpages.sh= (the shell script you created)
+
+Done.
+
+*** Multi Language Setting
+Beautiful Hugo provides some functions to support multi languages, and so does
+other themes. Here I introduce my settings:
+- English as default
+- Simplified Chinese as secondary
+- Different main menu for each language
+- An option for switching language, placed in main menu, top right corner. (Supported by Beautiful Hugo)
+- For each article, an option for switching language, placed under the title. (Supported by Beautiful Hugo)
+
+The files needed to be changed:
+- =config.toml=
+- =nav.html=
+- structure under =content/=
+- =single.html=, =terms.html=, =post_preview.html=
+
+**** Modify =config.toml=
+Details in official document: [[https://gohugo.io/content-management/multilingual/][Multilingual]]
+
+Here's the excerpt of my =config.toml=, it sets the languages and their main
+menu.
+#+BEGIN_SRC toml -n 15
+DefaultContentLanguage = "en"
+DefaultContentLanguageInSubdir = true
+[languages]
+  [languages.en]
+    contentDir = "content/en" #English
+    weight = 1
+    languageName = "English" # Name shown in the main menu
+    subtitle = "This is subtitle for this website"
+    [languages.en.params]
+      linkedin = "https://muscaestar.github.io/myBlog/en/"
+    [[languages.en.menu.main]]
+        name = "Blog"
+        url = ""
+        weight = 1
+    [[languages.en.menu.main]]
+        name = "About"
+        url = "page/about/"
+        weight = 3
+    [[languages.en.menu.main]]
+        name = "Tags"
+        url = "tags"
+        weight = 3
+  [languages.zh-CN]
+    contentDir = "content/zh-CN" #Simplified Chinese
+    weight = 2
+    languageName = "简体中文" # Name shown in the main menu
+    subtitle = "副标题"
+    [languages.zh-CN.params]
+      linkedin = "https://muscaestar.github.io/myBlog/zh-CN/"
+    [[languages.zh-CN.menu.main]]
+        name = "博客"
+        url = ""
+        weight = 1
+    [[languages.zh-CN.menu.main]]
+        name = "关于"
+        url = "page/about/"
+        weight = 3
+    [[languages.zh-CN.menu.main]]
+        name = "标签"
+        url = "tags"
+        weight = 3
+#+END_SRC
+
+**** Modify =nav.html=
+=nav.html= is a partial template. For more details, go to: [[https://gohugo.io/templates/partials/][Partial Templates]]. Partial template can be placed in
+=layouts/partials/= or =themes/<themename>/layouts/partials/=.
+
+=nav.html= is a template provided by Beautiful Hugo, which sets the format of
+main menu. It works by default, but in my case, since baseURL is set as
+=<username>.github.io/<projectName>=, there's one place need to be changed.
+
+To modify the templates provided by the theme, I recommend to do this:
+#+BEGIN_SRC shell
+# make a copy of theme's nav.html and place it in your own place
+$ cp themes/beautifulhugo/layouts/partials/nav.html layouts/partials/nav.html
+#+END_SRC
+Then modify the =nav.html= under =layouts/partials/=. Hugo engine will read your
+template instead of the theme's. (More details about [[https://gohugo.io/templates/lookup-order/][Hugo's Lookup Order]] )
+
+Here's the excerpt of my =nav.html=. In my case, the baseURL is
+=muscaestar.github.io/myBlog/=, so I'll add =/myBlog/= to the original code. See
+line 39, 48.
+#+BEGIN_SRC html -n 32 :hl_lines 8,17
+{{ if .Site.IsMultiLingual }}
+    {{ if ge (len .Site.Languages) 3 }}
+    <li class="navlinks-container">
+        <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
+        <div class="navlinks-children">
+        {{ range .Site.Languages }}
+            {{ if not (eq .Lang $.Site.Language.Lang) }}
+            <a href="/myBlog/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+            {{ end }}
+        {{ end }}
+        </div>
+    </li>
+    {{ else }}
+    <li>
+        {{ range .Site.Languages }}
+        {{ if not (eq .Lang $.Site.Language.Lang) }}
+            <a href="/myBlog/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+        {{ end }}
+        {{ end }}
+    </li>
+    {{ end }}
+{{ end }}
+#+END_SRC
+
+**** Modify structure under =content/=
+The file structure must match with the =contentDir= variable specified in
+=config.toml=. In my case, the structure is set as below:
+#+BEGIN_SRC
+content/      content/
+└── en/       └── zh-CN/
+    ├── page/     ├── page/
+    └── post/     └── post/
+#+END_SRC
+
+**** Modify =single.html=, =terms.html=, =post_preview.html= (Updated)
+The problem comes with the variable =.Site.LanguagePrefix=, for some reasons, it
+doesn't return complete baseURL. The url of tags will be affected by this problem. The solution is to use =.Site.Language.Lang=.
+Here're the details:
+#+BEGIN_SRC shell
+$ cp themes/beautifulhugo/layouts/_default/single.html layouts/_default/single.html
+$ cp themes/beautifulhugo/layouts/_default/terms.html layouts/_default/terms.html
+$ cp themes/beautifulhugo/layouts/partials/post_preview.html layouts/partials/post_preview.html
+#+END_SRC
+Then use =.Site.Language.Lang= to replace =.Site.LanguagePrefix= in the
+following files:
+- =layouts/_default/single.html=
+- =layouts/_default/terms.html=
+- =layouts/partials/post_preview.html=
+
+*** In the End
+So far, a multi language blog is successfully built. It already has a pretty
+easy workflow for blogging, and it's actually enough for daily use.
+For explorers, there're still plenty of advanced functionalities of
+Hugo, and for me, I'll start working on the integration of Hugo and org-mode in Emacs.
+
+** DONE 用 Hugo 构建一个多语言博客（Github 部署）
+CLOSED: [2019-12-27 Sun 17:37]
+:PROPERTIES:
+:EXPORT_FILE_NAME: MultiLanguage-Blog-Hugo-Github
+:EXPORT_HUGO_SECTION: zh-CN/post
+:EXPORT_HUGO_LOCALE: zh
+:END:
+Hugo 是一个非常好用的静态网站生成器，也适合用来创建简单的博客。它有非常多的功能，
+并且支持各种 Markdown 语言。本篇文章主要用来记录本博客的创建，主要内容有：
+1. 安装和部署
+2. 设置多语言
+#+hugo: more
+*** 为什么用 Hugo？
+主要就是快嘛，这也是它在官网和社区中介绍的最大的特点。至于具体究竟多快，其实对我来说并不重要，满足基本的博客要求就行了。
+对我来说，在看过各个博客框架后，最终让我选择 Hugo 的原因是，它对 org 的支持。
+再详细一点，就是 Hugo 可以和 Emacs 的 org-mode 很好得整合起来。
+不过这篇文章不是关于 Emacs 的，因为即使不用 Emacs，Hugo 本身就已经很好用了。
+我也是用最通常的使用方法体验了一下 Hugo，太简单方便了，这篇文章就来记录一下这个过程。仅仅需要一点点命令行知识，就可以马上上手 Hugo。
+*** 开始之前
+请确保已经了解一下三件事项：
+1. 最最最基础的 shell 知识
+2. 懂得如何查阅官方文档，其实就是愿意耐心读
+3. 用过 Github
+
+操作系统： =macOS=
+
+*** 安装和部署
+**** 安装
+运行下列命令。相关文档: [[https://gohugo.io/getting-started/quick-start/][Quick Start]]
+#+BEGIN_SRC shell
+$ brew install hugo    # Homebrew
+$ hugo version         # Verify, in my case v0.60.1
+$ hugo new site <projectName> # Create project directory
+$ cd <projectName>     # Go to the new directory
+$ git init             # Version control
+#+END_SRC
+然后把它作为 Github repository。这里不过多赘述。
+
+**** 添加主题
+我使用的主题是：[[https://themes.gohugo.io/beautifulhugo/][Beautiful Hugo]]
+
+注意：本篇文章中有个别配置都是适用于 Beautiful Hugo，可能与其他主题有所区别。
+
+安装主题：
+#+BEGIN_SRC shell
+$ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+# use theme's example config file as a start point
+$ cat themes/beautifulhugo/exampleSite/config.toml >> config.toml
+#+END_SRC
+在开始配置之前，推荐观察一下 =<project>/themes/beautifulhugo/exampleSite= 目录下的文件，帮助理解整体框架。
+
+随便改改配置文件`config.toml`看看有什么效果。相关文档：[[https://gohugo.io/getting-started/configuration/][Configuration]]
+
+**注意事项： =baseURL= 一定要设置对。本博客的设置是类似于这样的 url 结构
+="https://<username>.github.io/<projectName>/"=*
+
+**** 简单测试
+#+BEGIN_SRC shell
+$ hugo new post/testing-post.md # Create a new post
+#+END_SRC
+创建的新文档在此目录下 =<project>/content/post/=.
+
+**Beautiful Hugo 的设置：为了部分功能可以使用，必须用特定的路径名，如 =page= 和 =post=**
+现在可以开 server 看一看页面的效果：
+#+BEGIN_SRC shell
+$ hugo server -D # Start the Hugo server locally
+#+END_SRC
+
+在浏览器里输入[[http://localhost:1313/][http://localhost:1313/]]查看效果。( 本博客的情况下，链接为 http://localhost:1313/projectName/ ）
+第一次的话，应该会看起来比较奇怪，多修改几次=config.toml=文件，直到满意为止。（友情提示：差不多就得了。）
+
+如果这一步完成了，就可以开始部署了。
+
+**** 部署博客
+可用的方法有很多，我这里选择的是部署到 project page 上，会用到 =gh-pages= 分支。官方文档写的很详细啦，照着做就可以：
+- [[https://gohugo.io/hosting-and-deployment/hosting-on-github/][General Description]]
+- [[https://gohugo.io/hosting-and-deployment/hosting-on-github/#deployment-of-project-pages-from-your-gh-pages-branch][Specific to my case]] (use =origin= to replace =upstream=)
+
+一定要一步不漏做下来，不出意外的话，gh-pages 也就设置好了。并且根据指示，你也创
+建了一个叫 =publish_to_ghpages.sh= 的脚本，简单说是博文一键发布脚本。
+
+**注意事项：在官方文档指示中，要用 =origin= 字段来替代它使用的 =upstream= 字段。*
+主要是因为我的 github repo 的主分支叫 =origin=.
+
+**** 简易发布流程
+成功部署之后，在此项目的 github 网页上，你能看到两个分支。
+=gh-pages= 分支的内容是最后发布到网页的内容。这样做，你的源文件和发布内容就能分开维护和版本控制，我个人比较喜欢这样的做法。
+
+发布流程：
+1. 运行 =hugo new post/Article-Name.md=
+2. 编写文章
+3. 运行 =hugo server -D= 查看页面效果
+4. 发布之前，需要在文章头部的 front matter 做这个修改 =draft: false=
+5. commit 主分支的新改动
+6. 运行 =./publish_to_ghpages.sh=
+
+完成。
+
+*** 多语言设置
+Beautiful Hugo 本身提供了一些支持多语言的功能，我的设置如下：
+- 英文作为默认语言
+- 中文作为第二语言
+- 为不同语言设置各自的主菜单
+- 切换网站语言的选项，放置在主菜单中，通常在页面右上角。（Beautiful Hugo 提供）
+- 每篇文章的标题下，有一个切换语言的选项。（Beautiful Hugo 提供）
+
+需要修改一下文档：
+- =config.toml=
+- =nav.html=
+- =content/= 路径下的文件结构
+- =single.html=, =terms.html=, =post_preview.html=
+
+**** 修改 =config.toml=
+相关文档：[[https://gohugo.io/content-management/multilingual/][Multilingual]]
+
+以下为 =config.toml= 的节选：
+#+BEGIN_SRC toml -n 15
+DefaultContentLanguage = "en"
+DefaultContentLanguageInSubdir = true
+[languages]
+  [languages.en]
+    contentDir = "content/en" #English
+    weight = 1
+    languageName = "English" # Name shown in the main menu
+    subtitle = "This is subtitle for this website"
+    [languages.en.params]
+      linkedin = "https://muscaestar.github.io/myBlog/en/"
+    [[languages.en.menu.main]]
+        name = "Blog"
+        url = ""
+        weight = 1
+    [[languages.en.menu.main]]
+        name = "About"
+        url = "page/about/"
+        weight = 3
+    [[languages.en.menu.main]]
+        name = "Tags"
+        url = "tags"
+        weight = 3
+  [languages.zh-CN]
+    contentDir = "content/zh-CN" #Simplified Chinese
+    weight = 2
+    languageName = "简体中文" # Name shown in the main menu
+    subtitle = "副标题"
+    [languages.zh-CN.params]
+      linkedin = "https://muscaestar.github.io/myBlog/zh-CN/"
+    [[languages.zh-CN.menu.main]]
+        name = "博客"
+        url = ""
+        weight = 1
+    [[languages.zh-CN.menu.main]]
+        name = "关于"
+        url = "page/about/"
+        weight = 3
+    [[languages.zh-CN.menu.main]]
+        name = "标签"
+        url = "tags"
+        weight = 3
+#+END_SRC
+
+**** 修改 =nav.html=
+=nav.html= 是一个 partial template. 相关文档：[[https://gohugo.io/templates/partials/][Partial Templates]]. Partial
+template 可以被放在 =layouts/partials/= 或者 =themes/<themename>/layouts/partials/=.
+
+=nav.html= 由 Beautiful Hugo 提供, 用来构建主菜单，默认即可使用。但是本博客的 baseURL 被设置为 =<username>.github.io/<projectName>=, 所以有个地方是需要改动的。
+
+推荐在改动前做以下操作：
+#+BEGIN_SRC shell
+# make a copy of theme's nav.html and place it in your own place
+$ cp themes/beautifulhugo/layouts/partials/nav.html layouts/partials/nav.html
+#+END_SRC
+需要修改的`nav.html`是放在`layouts/partials/`路径下的. Hugo 会将你的个人设置优先于主题的设置。([[https://gohugo.io/templates/lookup-order/][Hugo's Lookup Order]])
+
+以下是 =nav.html= 的节选. 因为我的 baseURL 值为 =muscaestar.github.io/myBlog/=, 所
+以我把 =/myBlog/= 加到特定的地方，详情见行 39,48.
+#+BEGIN_SRC html -n 32 :hl_lines 8,17
+{{ if .Site.IsMultiLingual }}
+    {{ if ge (len .Site.Languages) 3 }}
+    <li class="navlinks-container">
+        <a class="navlinks-parent">{{ i18n "languageSwitcherLabel" }}</a>
+        <div class="navlinks-children">
+        {{ range .Site.Languages }}
+            {{ if not (eq .Lang $.Site.Language.Lang) }}
+            <a href="/myBlog/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+            {{ end }}
+        {{ end }}
+        </div>
+    </li>
+    {{ else }}
+    <li>
+        {{ range .Site.Languages }}
+        {{ if not (eq .Lang $.Site.Language.Lang) }}
+            <a href="/myBlog/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+        {{ end }}
+        {{ end }}
+    </li>
+    {{ end }}
+{{ end }}
+#+END_SRC
+
+**** 修改路径 =content/= 下的文件结构
+路径名必须与配置文件 =config.toml= 中的 =contentDir= 值相匹配。本博客的结构如下：
+#+BEGIN_SRC
+content/      content/
+└── en/       └── zh-CN/
+    ├── page/     ├── page/
+    └── post/     └── post/
+#+END_SRC
+
+**** 修改 =single.html=, =terms.html=, =post_preview.html= (更新)
+变量 =.Site.LanguagePrefix= 有一些问题，没法返回完整的 url，于是我用
+=.Site.Language.Lang= 来代替它。
+#+BEGIN_SRC shell
+$ cp themes/beautifulhugo/layouts/_default/single.html layouts/_default/single.html
+$ cp themes/beautifulhugo/layouts/_default/terms.html layouts/_default/terms.html
+$ cp themes/beautifulhugo/layouts/partials/post_preview.html layouts/partials/post_preview.html
+#+END_SRC
+在下列三个文件中，用 =.Site.Language.Lang= 来代替 =.Site.LanguagePrefix=:
+- =layouts/_default/single.html=
+- =layouts/_default/terms.html=
+- =layouts/partials/post_preview.html=
+
+*** 写在最后
+至此，一个多语言博客就设置部署完成了。文中提到的发布流程也足够日常发布博文使用，
+如果没什么特别要求，一个简单的博客就建成了。当然 Hugo 还有很多高级功能可以使用，
+这里就不多介绍，看官方文档就可以。接下来计划介绍如何整合 Hugo 和 org-mode，让 org-mode 写博客的体验更加丝滑。
+* DONE Use Emacs to Organize Hugo Blog / 用 Emacs 来管理 Hugo 博客 :blog:Hugo:Emacs:org_mode:
+CLOSED: [2019-12-29 Sun 20:52]
+** DONE Use Emacs to Organize Hugo Blog
+CLOSED: [2019-12-29 Sun 17:51]
+:PROPERTIES:
+:EXPORT_FILE_NAME: Emacs-ox-hugo-Organize-Blog
+:EXPORT_HUGO_SECTION: en/post
+:END:
+Emacs is a magical 'software' and you can do 'everything' in it, of course writing
+and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article will introduce org-mode and ox-hugo to
+make Hugo better for Emacs users.
+#+hugo: more
+*** Why Emacs? Org-mode?
+Almost every programmer have at least heard the famous 'GNU/Emacs', or the joke about the
+Editor War between Vim users and Emacs users. Both of them seem to be very proud of
+mastering at least one of these 'highly customizable' 'tough-learning' 'COOL' text
+editor. Don't get me wrong. Vim and Emacs are great, and I enjoy using both of
+them. But to be honest, with the rise of modern IDEs and their 'not bad'
+plugins, those actual Vim users and Emacs user are gradually becoming the minority group.
+Admit it, out-of-the-box is the new black.
+
+So, why am I bother writing this article introducing a tiny customization
+package in Emacs?
+Because even though I'm kinda happy with this OOTB world, I still realize that
+nobody really feels satisfied with it. Yes, modern software is so convenient.
+But the interesting thing is, for example, WHY there's no alternatives for
+org-mode?
+
+Finally, here comes the hero, the Org-mode. I think org-mode is the reason
+that I insist on sticking with Emacs. My schedules, projects, todos, study notes with plenty of
+runnable codes, sudden crazy ideas... so much programming-related or not related
+stuffs are well organized with it. It becomes my second brain. It *organizes* my life.
+So cliché, but so true.
+
+So I write this article. It's an introduction of some tiny features of the
+tremendous Emacs. It's my 'love letter' to the lovely org-mode. I wish I could meet you
+earlier. You literally change my life.
+
+OK, that's enough. Let's jump back to the topic.
+*** Why ox-hugo?
+First of all, checkout the official recommendation of [[https://gohugo.io/tools/editors/][Hugo's editor plugins]]. Yes,
+there're many other plugins, in Vim, VS Code, Atom, Sublime... If you don't feel
+anything with
+org-mode, its time to leave. I believe other plugins should work fine
+and 'more OOTB'.
+
+For Emacs user, there're two packages, [[https://github.com/masasam/emacs-easy-hugo][easy-hugo]] or [[https://ox-hugo.scripter.co/][ox-hugo]]. Here's what I
+thought. Easy-hugo is made for Emacs, and ox-hugo is made specifically for
+org-mode. Easy-hugo helps you dealing with blog-related file management and configurations,
+using some shortcuts to replace redundant CLI works. While, ox-hugo goes a different
+direction, which is basically an org-mode exporter. It is the details of
+ox-hugo's features design that impressed me. In my opinion, ox-hugo's design match some of the true
+philosophies of org-mode.
+
+"Using Org just as a markup like Markdown is a miniscule part of its complete
+feature-set." -- [[https://ox-hugo.scripter.co/doc/why-ox-hugo/][Why ox-hugo?]]
+*** It is MORE about your thinking than doing
+**** Design your own structure
+When it comes to customization, there's no simple HOW TO.
+Ox-hugo is well documented in its [[https://ox-hugo.scripter.co/][website]]. It offers you lots of functions, and
+sometimes people may become confused about their combination.
+If you are familiar with self-configuration, you don't need my saying.
+If you are not, maybe you can ask yourself these questions:
+- Am I satisfied with my current workflow? How about in the nearly future?
+- Do I need to use all the functions it offers?
+- Which functions are my actual needs?
+- Can I improve my workflow without installing this package?
+- (configuration time) < (time saved for the future) Really?
+
+It is worthy to dig your mind, and finally find your true desire. Otherwise,
+you just jumped into an infinite editor customization loop.
+**** Here's my thinking
+My reason for using it:
+- I'm used to taking notes in org-mode, I wish I could just copy my notes as
+  some parts of my posts without any changes in the format.
+- My blog will be maintained in two languages, which means for each post,
+  there're 2 files with same file name while placing in different directories.
+  To keep them linked, everytime I change one, I should make sure the other is
+  also changed. The two files are actually one post, so I wish I could manage
+  them together.
+- I write blog in Chinese, but with Emacs' auto word-wrap mode, each line
+  creates an unnecessary space when finally rendered to html file. It needs to
+  be fixed.
+- If I could organize all my post in just one org file. So that I could easily
+  do tags, modified time, and so on.
+- If the only one org file becomes too big, I could create another, and it won't
+  affect any previous structures.
+- How about move to another dynamic blog framework, so many automation problems will
+  be solved. But can I use evil-mode? org-mode? It may produce more
+  configuration time.
+- I already got lots of notes written in org mode, and I'm planning to make them my
+  future posts. So with ox-hugo, it will definitely save my time.
+*** Demo of mine
+**** The only one org file
+On the top of the org file, I put these declarations at the head as global settings.
+#+BEGIN_SRC org
+ #+HUGO_FRONT_MATTER_FORMAT: yaml
+ #+HUGO_BASE_DIR: ~/myBlog/
+ #+HUGO_AUTO_SET_LASTMOD: t
+#+END_SRC
+**** Use YASnippet to create blank template
+[[https://joaotavora.github.io/yasnippet/snippet-development.html][Documentation]] of write your own YASnippet template.
+
+Everytime I want to create a new post, I can just type
+=<post= and then hit =TAB=.
+
+Here's my YASnippet template setting.
+#+BEGIN_SRC snippet
+# -*- mode: snippet -*-
+# name: hugo-new-post
+# key: <post
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+
+ * ${1:Post title} / ${2:博文标题}
+ ** TODO $1
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: ${3:File-name}
+ :EXPORT_HUGO_SECTION: en/post
+ :END:
+ Abstract
+ #+hugo: more
+ *** Heading 1
+ text
+
+ ** TODO $2
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: $3
+ :EXPORT_HUGO_SECTION: zh-CN/post
+ :EXPORT_HUGO_LOCALE: zh
+ :END:
+ 前言
+ #+hugo: more
+ *** 正文标题 1
+ 正文
+#+END_SRC
+*** In the End
+This article is not about HOW TO, because I believe it is meaningless to write
+'do-what-I-say' article in terms of customization with Emacs. My configuration
+only works in my case, what matters is the process of reaching it.
+** DONE 用 Emacs 来管理 Hugo 博客
+CLOSED: [2019-12-29 Sun 20:51]
+:PROPERTIES:
+:EXPORT_FILE_NAME: Emacs-ox-hugo-Organize-Blog
+:EXPORT_HUGO_SECTION: zh-CN/post
+:EXPORT_HUGO_LOCALE: zh
+:END:
+Emacs 是个“神奇”的软件，你可以用它做“任何事”，当然这也就包括了写博客和管理博文。上一
+篇博文中，我讲了如何使用最基础的 Hugo 框架来写博客。今天这篇就来介绍一下，我是如何
+使用 org-mode 和 ox-hugo，来让 Hugo 博客体验更丝滑。
+#+hugo: more
+*** 为什么使用 Emacs？Org-mode?
+我想大部分程序员应该都听过 GNU/Emacs 的名声，或者至少听说过 Vim 和 Emacs 的宇宙最
+强编辑器大战，这种老梗。很多 Vim 或者 Emacs 的使用者，或者说，初学者，都挺喜欢津津乐
+道这种“上古编辑器”的自定义啊，学习门槛高啊，什么不需要使用鼠标的高效啊，装逼性
+强啊之类的优点。不是说不好，我也挺喜欢的，不过说实话，稍微走出“上古编辑器”这个圈
+地自萌的领域，就会发现，其实真的愿意使用 Vim 或 Emacs 的人，真的越来越少了。主要一个
+原因，现代 IDE 越来越好用了，并且大都自带 Vim, Emacs 插件。键位对上了，而且开箱即用，
+不得不说，用一下真的很香。
+
+既然这么香，那我何必在这里写一个配置 Emacs 的文章？还只是一个微不足道的小功能？我
+承认，我也很喜欢开箱即用，节省了很多时间和麻烦。但是但是，开箱即用，永远都不可能
+完全贴合每一个使用者的习惯。所谓编辑器，要不是你适应它，就得它适应你，最后还是
+时间花费上的权衡。说现代软件越来越先进，其实也不全对，比如 org-mode 的存在，就
+让我一直费解：10 多年了，为什么没有人能做出一个超越 org-mode 的，集项目管理，时间规划，
+Markup 格式，还能内置跑代码等，各种功能于一身的软件？
+
+Org-mode 就是我一直使用 Emacs 的原因，至今没有找到任何一个替代品。它的功能实在太
+强大，各部分之间的集成又实在是太顺滑。我曾经沉迷尝试各种效率软件，但没有一个能像
+org-mode 一样真的 *改变* 我的生活和习惯。我想应该有许多 Emacs 使用者，也是如此深深喜爱
+着 org-mode。
+
+大概，这篇文章应该就是只为 org-mode 而写，为 org-mode 爱好者而写。
+
+*** 为什么使用 ox-hugo?
+开始之前，何不看看这个：[[https://gohugo.io/tools/editors/][Hugo的编辑器插件]]. Hugo 其实支持了很多的编辑器, Vim, VS
+Code, Atom, Sublime 等等。所以要不是真的 org-mode 爱好者，只要选择自己合适的插
+件就足够了。工具只是工具，适合自己的才是最好的。
+
+在 Emacs 上，Hugo 有两款插件，[[https://github.com/masasam/emacs-easy-hugo][easy-hugo]] 和 [[https://ox-hugo.scripter.co/][ox-hugo]]. 这两款插件的定位是不一样的，
+easy-hugo 是一款在 Emacs major-mode 上使用的博客内容管理工具，主要功能是通过一些快
+捷操作来实现原来需要在命令行上的重复操作。ox-hugo 从最最基本的功能上来说，就是一
+款 org 格式转 Markdown 格式的工具，听起来很普通的样子，但是它对功能的设计十分惊艳，
+完美地和 org-mode 的优点契合在一起。这也是我在使用之后，才发觉的。
+
+Org-mode 决不仅仅是一个 markup 语言，这只是它表面的皮毛罢了。你可以看看 ox-hugo 的开
+发者的观点：[[https://ox-hugo.scripter.co/doc/why-ox-hugo/][Why ox-hugo?]]
+*** 所思比所做更值得注意
+**** 想想究竟什么才适合你
+对于自定义，从来就没有什么简单明了的“该怎么做”。
+[[https://ox-hugo.scripter.co/][官方文档]]里对所有功能都有详细的介绍。对于达成一个特定的功能，ox-hugo 里是有很多选
+择的，这也就会造成一些特殊的困扰：究竟应该如何组合各个不同的功能。相信每个玩自定义
+的朋友在刚开始都会有类似麻烦。在做出选择之前，我通常会考虑一下几个问题：
+- 我对目前的操作流程满意吗？满意程度在将来会改变吗？
+- 我需要使用它的全部功能吗？
+- 哪几个功能是我真的需要的？
+- 在安装它之前，我能够通过其他地方的改进，来改善目前的操作流程吗？
+- 配置所需时间真的小于将来节省下来的时间吗？
+
+多多思考一下自定义功能的价值，还是很有用处的，有些时候需要适可而止。否则总有一天，
+你会感叹自己把大把的时间都浪费在了没有实际意义的配置上。
+**** 一些我的理由
+分享一下我决定使用 ox-hugo 的理由：
+- 我已经习惯于使用 org-mode 记笔记，我希望我可以把笔记内容直接复制粘贴作为博文的内
+  容，而不需要改变格式。
+- 我的博客是中英双语，同时维护一篇博文的两个语言版本，意味着我得在两个不同的路径
+  下管理两个文件。为了确保 Hugo 将两份文件视作同一博文的两个版本，很多时候我必须同
+  时修改两个文件的内容，以避免冲突。假如我可以在一个文件中管理多个文本，效率会有
+  很大的提升。
+- 当我用中文在 Emacs 里写作时，通常开着 word-warp mode，也就是自动换行。这会导致一
+  个问题，就是当 Hugo 在将文档转为 html 文件时，每个自动换行的点都会多出一个空格，十
+  分影响美观。ox-hugo 能够自动处理这个问题。
+- 假如我的所有博文都能放在同一个文件中，我就能很方便地统一管理 tag 以及其他设定了。
+- 假如我的 org 文件过大，我也可以再新建新的 org 文件，并且不会影响之前的任何已发布的
+  设置。
+- 似乎迁移去更产品化的博客系统也能解决我存在的这些问题，可是我就不一定能很好地使用
+  org-mode 和 evil-mode 键位。可能会出现许多新的麻烦。
+- 我已经有了许多 org-mode 下的笔记，我也计划将它们作为博文内容发布。因此，配置
+  ox-hugo 一定能在将来这方面节省下我的时间。
+*** 我的配置
+**** 集合所有博文的 org 文件
+所有的博文都放在这份文件中，我只要在文件开头写上这些，就是全局设定。
+#+BEGIN_SRC org
+ #+HUGO_FRONT_MATTER_FORMAT: yaml
+ #+HUGO_BASE_DIR: ~/myBlog/
+ #+HUGO_AUTO_SET_LASTMOD: t
+#+END_SRC
+**** 使用 YASnippet 制作模板
+[[https://joaotavora.github.io/yasnippet/snippet-development.html][Documentation]] of write your own YASnippet template.
+
+Everytime I want to create a new post, I can just type
+=<post= and then hit =TAB=.
+
+Here's my YASnippet template setting.
+#+BEGIN_SRC snippet
+# -*- mode: snippet -*-
+# name: hugo-new-post
+# key: <post
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+
+ * ${1:Post title} / ${2:博文标题}
+ ** TODO $1
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: ${3:File-name}
+ :EXPORT_HUGO_SECTION: en/post
+ :END:
+ Abstract
+ #+hugo: more
+ *** Heading 1
+ text
+
+ ** TODO $2
+ :PROPERTIES:
+ :EXPORT_FILE_NAME: $3
+ :EXPORT_HUGO_SECTION: zh-CN/post
+ :EXPORT_HUGO_LOCALE: zh
+ :END:
+ 前言
+ #+hugo: more
+ *** 正文标题 1
+ 正文
+#+END_SRC
+*** 写在最后
+这篇博文并没有涉及如何使用，我觉得官网文档已经描述的很清楚了，同时我也觉得，对于
+Emacs 上的自定义，写下我自己的配置用处也不是很大，因为这终究只是适合我个人的配置。
+我想，真的重要的，是在过程中的个人思考吧。
+* DOING Musca's Algo Notes: Preview / Musca 的算法笔记：总起 :Algorithm:
+** DONE Musca's Algo Notes: Preview
+CLOSED: [2020-02-13 Thu 20:56]
+:PROPERTIES:
+:EXPORT_FILE_NAME: Musca-Algo-Notes-Preview
+:EXPORT_HUGO_SECTION: en/post
+:END:
+Algorithms, the field which is so fundamental, so important, and so hard,
+relatively speaking. For a student without any working experience, algorithm should
+be:
+1. A proof of your solid knowledge base
+2. A guide to help you truly understand some classic source code
+3. An inspirer, connecting the tech world with reality
+I'll keep updating this post, listing key terms in Algorithm field. The list can
+also be regarded as my study path. I'll try to write blogs for every term mentioned.
+#+hugo: more
+*** Basic Terminology
+- Asymptotic complexity analysis - 渐进式复杂度分析
+  - Big O notation(asymptotic notation) - 大 O 符号（渐进符号）
+- Recursion - 递归
+- Sorting - 排序
+- Searching - 搜索
+- Set - 集合
+- Tree - 树
+- Graph - 图
+- Greedy - 贪心
+- Divide and conquer - 分治
+- Backtracking algorithm - 回溯
+- Dynamic programming - 动态规划
+- BitMap - 位图
+*** Data Structure
+- Array - 数组
+- List - 列表
+- Linked list - 链表
+  - Singly linked list - 单链表
+  - Doubly linked list - 双向链表
+  - Circular linked list - 循环链表
+- Stack - 栈
+- Queue - 队列
+  - Array-implementation queue - 顺序队列
+  - Linked-list implementation queue - 链式队列
+  - Double-ended queue - 双端队列
+  - Circular buffer(circular queue) - 循环队列
+  - Blocking queue - 阻塞队列
+  - Concurrent queue - 并发队列
+- Priority queue - 优先队列
+  - Double-ended priority queue - 双端优先队列
+- Hash table - 散列表、哈希表
+- Binary tree - 二叉树
+  - BST(Binary search tree) - 二叉查找树
+  - Self-balancing (or height-balanced) binary search tree - 平衡二叉查找树
+  - Red-black tree - 红黑树
+  - AVL Tree - AVL 树
+- Recursion Tree - 递归树
+- Heap - 堆
+- B+ Tree - B＋树
+- Skip list - 跳表
+*** Algorithm
+**** Sorting algorithms - 排序算法
+- Bubble sort - 冒泡排序
+- Insertion sort - 插入排序
+- Shell sort - 希尔排序
+- Selection sort - 选择排序
+- Merge sort - 归并排序
+- Quick sort(partition-exchange sort) - 快速排序
+- Bucket sort - 桶排序
+- Counting sort - 计数排序
+- Radix sort - 基数排序
+- Heap sort - 堆排序
+- Topological sort - 拓扑排序
+**** String-matching algorithms - 字符串匹配算法
+- Brute Force - 暴力匹配算法、BF 算法
+- Rabin-Karp Algorithm - RK（Rabi Karp) 算法
+- Boyer-Moore Algorithm - BM（Boye Moore）算法
+- KMP(Knuth–Morris–Pratt) Algorithm - KMP 算法
+- Trie Tree - Trie 树、字典树
+- Aho–Corasick Algorithm - AC 自动机算法
+**** Searching - 搜索
+- Binary search - 二分查找
+- DFS(Depth-First search) - 深度优先搜索
+- BFS(Breadth-first search) - 广度优先搜索
+- Dijkstra Algorithm - Dijkstra 算法
+- A* search algorithm - A*算法
+**** Hash algorithms - 哈希算法、散列算法
+*** The End
+Plan:
+
+- [ ] Implementation of Binary Tree, pre/in/post-order traversal; BST
+  Implementation, insert/find/delete;find last/next/largest/smallest nodes
+
+- [ ] Keep updating...
+*** Reference
+- [[https://time.geekbang.org/column/intro/126][极客时间－数据结构与算法之美]]
+- [[https://www.khanacademy.org/computing/computer-science/algorithms][Cormen and Balkcom's Algorithms course]]
+- Wikipedia
+
+** DONE Musca 的算法笔记：总起
+CLOSED: [2020-02-13 Thu 20:59]
+:PROPERTIES:
+:EXPORT_FILE_NAME: Musca-Algo-Notes-Preview
+:EXPORT_HUGO_SECTION: zh-CN/post
+:EXPORT_HUGO_LOCALE: zh
+:END:
+算法算法算法，在计算机行业，大概过了这关才能算真的入了门。初入社会的学生，
+特别是半道转行的，比如在下，更应该知道算法的重要性并主动学习。学习算法至少有下列好处：
+1. 证明自己的基础知识（不仅仅只会跟着框架“敲”代码）
+2. 帮助自己更深入理解优秀的源代码
+3. 启发思考，从另一个角度观察技术对世界的改变
+这篇博文记录了算法话题中常见的技术关键词。我会不断更新它，并且以此为学习路径，写
+新的笔记。
+#+hugo: more
+*** 基本术语概念
+- 渐进式复杂度分析 - Asymptotic complexity analysis
+  - 大 O 符号（渐进符号） - Big O notation(asymptotic notation)
+- 递归 - Recursion
+- 排序 - Sorting
+- 搜索 - Searching
+- 集合 - Set
+- 树 - Tree
+- 图 - Graph
+- 贪心 - Greedy
+- 分治 - Divide and conquer
+- 回溯 - Backtracking algorithm
+- 动态规划 - Dynamic programming
+- 位图 - BitMap
+
+*** 数据结构
+- 数组 - Array
+- 列表 - List
+- 链表 - Linked list
+  - 单链表 - Singly linked list
+  - 双向链表 - Doubly linked list
+  - 循环链表 - Circular linked list
+- 栈 - Stack
+- 队列 - Queue
+  - 顺序队列 - Array-implementation queue
+  - 链式队列 - Linked-list implementation queue
+  - 双端队列 - Double-ended queue
+  - 循环队列 - Circular buffer(circular queue)
+  - 阻塞队列 - Blocking queue
+  - 并发队列 - Concurrent queue
+- 优先队列 - Priority queue
+  - 双端优先队列 - Double-ended priority queue
+- 散列表、哈希表 - Hash table
+- 二叉树 - Binary tree
+  - 二叉查找树 - BST(Binary search tree)
+  - 平衡二叉查找树 - Self-balancing (or height-balanced) binary search tree
+  - 红黑树 - Red-black tree
+  - AVL 树 - AVL Tree
+- 递归树 - Recursion Tree
+- 堆 - Heap
+- B＋树 - B+ Tree
+- 跳表 - Skip list
+
+*** 算法
+**** 排序算法 - Sorting algorithms
+- 冒泡排序 - Bubble sort
+- 插入排序 - Insertion sort
+- 希尔排序 - Shell sort
+- 选择排序 - Selection sort
+- 归并排序 - Merge sort
+- 快速排序 - Quick sort(partition-exchange sort)
+- 桶排序 - Bucket sort
+- 计数排序 - Counting sort
+- 基数排序 - Radix sort
+- 堆排序 - Heap sort
+- 拓扑排序 - Topological sort
+**** 字符串匹配算法 - String-matching algorithms
+- 暴力匹配算法、BF 算法 - Brute Force
+- RK（Rabin-Karp) 算法 - Rabin-Karp Algorithm
+- BM（Boyer-Moore）算法 - Boyer-Moore Algorithm
+- KMP 算法 - KMP(Knuth–Morris–Pratt) Algorithm
+- Trie 树、字典树 - Trie Tree
+- AC 自动机算法 - Aho–Corasick Algorithm
+**** 搜索 - Searching
+- 二分查找 - Binary search
+- 深度优先搜索 - DFS(Depth-First search)
+- 广度优先搜索 - BFS(Breadth-first search)
+- Dijkstra 算法 - Dijkstra Algorithm
+- A*算法 - A* search algorithm
+**** 哈希算法、散列算法 - Hash algorithms
+
+*** 写在最后
+更新计划：
+
+- [ ] 二叉树的简单实现，前、中、后序遍历；二叉搜索树的实现，增、删、查；查找最大、最小、
+  前驱、后继节点
+
+- [ ] 持续更新中...
+
+*** 参考资料
+- [[https://time.geekbang.org/column/intro/126][极客时间－数据结构与算法之美]]
+- [[https://www.khanacademy.org/computing/computer-science/algorithms][Cormen and Balkcom's Algorithms course]]
+- Wikipedia
