@@ -2,7 +2,7 @@
 title: "Musca's Algo Notes: Preview"
 author: ["Muscaestar"]
 date: 2020-02-13T20:56:00+11:00
-lastmod: 2020-02-13T21:10:19+11:00
+lastmod: 2020-02-17T03:16:25+11:00
 tags: ["Algorithm"]
 draft: false
 ---
@@ -110,12 +110,7 @@ also be regarded as my study path. I'll try to write blogs for every term mentio
 
 ## The End {#the-end}
 
-Plan:
-
--   [ ] Implementation of Binary Tree, pre/in/post-order traversal; BST
-    Implementation, insert/find/delete;find last/next/largest/smallest nodes
-
--   [ ] Keep updating...
+Implementation code: [Github Repo](https://github.com/muscaestar/algo)
 
 
 ## Reference {#reference}

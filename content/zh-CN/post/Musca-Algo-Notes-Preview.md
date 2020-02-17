@@ -2,7 +2,7 @@
 title: "Musca 的算法笔记：总起"
 author: ["Muscaestar"]
 date: 2020-02-13T20:59:00+11:00
-lastmod: 2020-02-13T21:09:59+11:00
+lastmod: 2020-02-17T03:16:20+11:00
 tags: ["Algorithm"]
 draft: false
 ---
@@ -107,11 +107,7 @@ draft: false
 
 ## 写在最后 {#写在最后}
 
-更新计划：
-
--   [ ] 二叉树的简单实现，前、中、后序遍历；二叉搜索树的实现，增、删、查；查找最大、最小、前驱、后继节点
-
--   [ ] 持续更新中...
+代码实现：[Github Repo](https://github.com/muscaestar/algo)
 
 
 ## 参考资料 {#参考资料}
