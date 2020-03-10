@@ -2,7 +2,7 @@
 title: "Algo Day 1: Start with Binary Tree"
 author: ["Muscaestar"]
 date: 2020-02-17T03:15:00+11:00
-lastmod: 2020-02-17T03:15:58+11:00
+lastmod: 2020-03-10T13:26:09+11:00
 tags: ["Algorithm"]
 draft: false
 ---
@@ -167,9 +167,9 @@ public void inOrder(Node<E> N) {
     if (N == null) {
         return;
     }
-    preOrder(N.leftNode); // L
+    inOrder(N.leftNode); // L
     doSomething(N); // N
-    preOrder(N.rightNode); // R
+    inOrder(N.rightNode); // R
 }
 ```
 
@@ -181,8 +181,8 @@ public void postOrder(Node<E> N) {
     if (N == null) {
         return;
     }
-    preOrder(N.leftNode); // L
-    preOrder(N.rightNode); // R
+    postOrder(N.leftNode); // L
+    postOrder(N.rightNode); // R
     doSomething(N); // N
 }
 ```

@@ -1103,9 +1103,9 @@ public void inOrder(Node<E> N) {
     if (N == null) {
         return;
     }
-    preOrder(N.leftNode); // L
+    inOrder(N.leftNode); // L
     doSomething(N); // N
-    preOrder(N.rightNode); // R
+    inOrder(N.rightNode); // R
 }
 #+END_SRC
 ***** LRN: post-order traversal
@@ -1114,8 +1114,8 @@ public void postOrder(Node<E> N) {
     if (N == null) {
         return;
     }
-    preOrder(N.leftNode); // L
-    preOrder(N.rightNode); // R
+    postOrder(N.leftNode); // L
+    postOrder(N.rightNode); // R
     doSomething(N); // N
 }
 #+END_SRC
@@ -1434,9 +1434,9 @@ public void inOrder(Node<E> N) {
     if (N == null) {
         return;
     }
-    preOrder(N.leftNode); // L
+    inOrder(N.leftNode); // L
     doSomething(N); // N
-    preOrder(N.rightNode); // R
+    inOrder(N.rightNode); // R
 }
 #+END_SRC
 ***** LRN：后序遍历
@@ -1445,8 +1445,8 @@ public void postOrder(Node<E> N) {
     if (N == null) {
         return;
     }
-    preOrder(N.leftNode); // L
-    preOrder(N.rightNode); // R
+    postOrder(N.leftNode); // L
+    postOrder(N.rightNode); // R
     doSomething(N); // N
 }
 #+END_SRC
@@ -2261,3 +2261,65 @@ private boolean build() {
 - 数据结构与算法分析：Java 语言描述（原书第 3 版）/ (美)维斯（ Weiss，M.A.)著；冯舜玺，
   陈越 译. -- 北京：机械工业出版社，2016.2
 - [[https://time.geekbang.org/column/intro/126][极客时间－数据结构与算法之美]]
+* TODO Algo Day 3: A Peek at Java Collections Framework / 算法 Day 3: 初探 Java 集合框架
+** TODO Algo Day 3: A Peek at Java Collections Framework
+:PROPERTIES:
+:EXPORT_FILE_NAME: Musca-Algo-Notes-Day-3
+:EXPORT_HUGO_SECTION: en/post
+:END:
+I want to learn algorithms with my own understanding, which means not going with
+the "classic path", asymptotic analysis, array, linked list, queue, stack, sort, so on. 
+I believe this traditional structure does work most of the time, that's why
+books and courses all follow it. But I just don't feel right.
+
+Just say, I want to draw my own graph and any vertex could be my start point. As
+long as I draw the edges correctly, no matter using DFS or BFS, I can finally
+finish the graph, which should theoretically match the common knowledge structure.
+
+So, I'll use Java collections framework as a "guide". Try to figure out the
+reasons for combining several ADTs and algorithms in its own way. It also helps
+my Java skills. A twofer.
+#+hugo: more
+*** Heading 1
+text
+
+** TODO 算法 Day 3: 初探 Java 集合框架
+:PROPERTIES:
+:EXPORT_FILE_NAME: Musca-Algo-Notes-Day-3
+:EXPORT_HUGO_SECTION: zh-CN/post
+:EXPORT_HUGO_LOCALE: zh
+:END:
+我一直想用自己的理解来学一遍算法，而不是直接跟着“经典”学习路径一路到头，比如从复
+杂度分析开始，依次认识数组、链表、栈、队列、等等等等。这是前辈们总结出来的，广泛
+适用于大部分学习情况的方法，对肯定是对的。不过从构建我的个人知识框架来说，“对”不够“好”。
+
+可以这么说，我的知识框架是一个图，那么我可以把任何一个顶点作为我的起点。只要能画
+对顶点之间的边，无论是深度优先还是广度优先，我最终都能得到一个像样的知识图谱。
+
+于是我决定，将 Java 的集合框架作为目前的“指导手册”。我首先
+要做的是，努力搞明白 Java 设计集合框架的思路，为什么用这些数据结构和算法互相组合？
+以此学习，算法和 Java 技能都能有所提升，一石二鸟。
+#+hugo: more
+*** 正文标题 1
+正文
+* Re-configuration of my CLI setup / 重新配置命令行工具
+** TODO Re-configuration of my CLI setup
+:PROPERTIES:
+:EXPORT_FILE_NAME: Re-config-CLI-setup
+:EXPORT_HUGO_SECTION: en/post
+:END:
+Abstract
+#+hugo: more
+*** Heading 1
+text
+
+** TODO 重新配置命令行工具
+:PROPERTIES:
+:EXPORT_FILE_NAME: Re-config-CLI-setup
+:EXPORT_HUGO_SECTION: zh-CN/post
+:EXPORT_HUGO_LOCALE: zh
+:END:
+前言
+#+hugo: more
+*** 正文标题 1
+正文
