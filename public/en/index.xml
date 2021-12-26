@@ -5,46 +5,14 @@
     <link>https://www.muscaestar.xyz/en/</link>
     <description>Recent content on Muscaestar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 29 Dec 2019 17:51:00 +1100</lastBuildDate>
-    
-	<atom:link href="https://www.muscaestar.xyz/en/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Use Emacs to Organize Hugo Blog</title>
-      <link>https://www.muscaestar.xyz/en/post/emacs-ox-hugo-organize-blog/</link>
-      <pubDate>Sun, 29 Dec 2019 17:51:00 +1100</pubDate>
-      
-      <guid>https://www.muscaestar.xyz/en/post/emacs-ox-hugo-organize-blog/</guid>
-      <description>&lt;p&gt;Emacs is a magical &amp;lsquo;software&amp;rsquo; and you can do &amp;lsquo;everything&amp;rsquo; in it, of course writing
-and organizing your blog posts. Last post, I built this blog with vanilla Hugo. This article will introduce org-mode and ox-hugo to
-make Hugo better for Emacs users.&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Sat, 28 Dec 2019 16:45:33 +1100</lastBuildDate><atom:link href="https://www.muscaestar.xyz/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
       <link>https://www.muscaestar.xyz/en/page/about/</link>
       <pubDate>Sat, 28 Dec 2019 16:45:33 +1100</pubDate>
       
       <guid>https://www.muscaestar.xyz/en/page/about/</guid>
-      <description>I&#39;m a newbie who bumped into the programming world a few years ago and decided to stay forever. Now I&#39;m studying IT in University. This blog shall witness my passion and efforts.
-I love Vim and Doom-Emacs. But since I realized these endless tool-customizing time didn&#39;t actually benefit my core skills, I&#39;ve started to focus on &amp;lsquo;decent real-matters&amp;rsquo;.
-Start from, data structures and algorithms&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Start a Multi Language Blog with Hugo on Github Pages</title>
-      <link>https://www.muscaestar.xyz/en/post/multilanguage-blog-hugo-github/</link>
-      <pubDate>Fri, 27 Dec 2019 17:37:00 +1100</pubDate>
-      
-      <guid>https://www.muscaestar.xyz/en/post/multilanguage-blog-hugo-github/</guid>
-      <description>&lt;p&gt;Hugo is a handy framework for generating static website, which suits for normal
-blog. You can easily write blogs with various markdown languages and organize
-them with lots of features. This article will show you how I create this blog with it. I will focus on:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Installation and Deployment&lt;/li&gt;
-&lt;li&gt;Multi-Language Setting&lt;/li&gt;
-&lt;/ol&gt;</description>
+      <description>There is only one me.</description>
     </item>
     
   </channel>
