@@ -1,3 +1,3 @@
 
 # Muscaestar's Blog: 
-This blog uses Netlify for deployment.
+This blog uses Render for deployment.
